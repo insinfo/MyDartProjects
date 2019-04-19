@@ -1,0 +1,5 @@
+username: "sisadmin"
+password: "s1sadm1n"
+host: "localhost"
+port: 5433
+databaseName: "apps"

@@ -1,0 +1,21 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto);
+@import url(https://fonts.googleapis.com/css?family=Material+Icons);
+
+/* Master Styles */
+* {
+  font-family: Roboto, Helvetica, Arial, sans-serif;
+}
+
+h1 {
+  color: #369;
+  font-size: 250%;
+}
+
+h2, h3 {
+  color: #444;
+  font-weight: lighter;
+}
+
+body {
+  margin: 2em;
+}

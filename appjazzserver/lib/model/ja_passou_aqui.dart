@@ -2,24 +2,24 @@ import 'dart:async';
 import 'dart:core';
 import 'package:aqueduct/aqueduct.dart';
 
-class GeneralData extends ManagedObject<_GeneralData> implements _GeneralData {}
+class JaPassouAqui extends ManagedObject<_jaPassouAqui>
+    implements _jaPassouAqui {}
 
-@Table(name: "generalData")
-class _GeneralData {
+
+//JÁ PASSARAM POR AQUI
+@Table(name: "jaPassaramAqui")
+class _jaPassouAqui {
 
   @Column(primaryKey: true,unique: true,autoincrement:true, databaseType: ManagedPropertyType.bigInteger)
   int id;
 
   @Column(unique: false,nullable: true)
-  String history;
+  String nome;
 
   @Column(unique: false,nullable: true)
-  String stages;
+  DateTime data;
 
+  //descrição
   @Column(unique: false,nullable: true)
-  int editions;
-
-  @Column(unique: false,nullable: true)
-  String logo;
-
+  String descricao;
 }

@@ -2,28 +2,29 @@ import 'dart:async';
 import 'dart:core';
 import 'package:aqueduct/aqueduct.dart';
 
-class Attraction extends ManagedObject<_Attraction> implements _Attraction {}
+class Atracao extends ManagedObject<_Atracao> implements _Atracao {}
 
-@Table(name: "attractions")
-class _Attraction {
+//atrações
+@Table(name: "atracoes")
+class _Atracao {
 
   @Column(primaryKey: true,unique: true,autoincrement:true, databaseType: ManagedPropertyType.bigInteger)
   int id;
 
   @Column(unique: false,nullable: true)
-  String name;
+  String nome;
 
   @Column(unique: false,nullable: true)
-  String description;
+  String descricao;
 
   @Column(unique: false,nullable: true)
-  int year;
+  int ano;
 
   @Column(unique: false,nullable: true)
-  DateTime date;
+  DateTime data;
 
   @Column(unique: false,nullable: true)
-  String picture;
+  String imagem;
 
   @Column(unique: false,nullable: true)
   String video;

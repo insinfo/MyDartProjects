@@ -1,7 +1,20 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="c58ae4ba-b4df-48ab-b048-181556599f17" name="Default Changelist" comment="" />
+    <list default="true" id="c58ae4ba-b4df-48ab-b048-181556599f17" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/channel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/channel.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/controller/attractions_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/controller/atracoes_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/controller/food_place_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/controller/comercio_parceiro_controller.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/already_played_here.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/model/ja_passou_aqui.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/attraction.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/model/atracoes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/festival_supporter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/model/apoiador_festival.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/food_place.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/model/comercio_parceiro.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/general_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/model/general_data.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/lodging_place.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/model/usuario.dart" afterDir="false" />
+    </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -17,8 +30,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/lib/src/components/attractions_list_component.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="305">
-              <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+            <state relative-caret-position="575">
+              <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
               <folding>
                 <element signature="e#0#38#0" expanded="true" />
               </folding>
@@ -45,6 +58,9 @@
         </entry>
       </file>
     </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -74,6 +90,7 @@
     <option name="width" value="1346" />
     <option name="height" value="698" />
   </component>
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
     <navigator proportions="" version="1">
       <foldersAlwaysOnTop value="true" />
@@ -125,6 +142,7 @@
     </panes>
   </component>
   <component name="PropertiesComponent">
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="dart.analysis.tool.window.force.activate" value="false" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/src/components" />
@@ -199,7 +217,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32850242" />
       <window_info anchor="bottom" id="Dart Analysis" order="7" weight="0.32850242" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.2657005" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.2657005" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Flutter Performance" order="11" side_tool="true" />
@@ -362,8 +380,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/components/attractions_list_component.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="305">
-          <caret line="35" lean-forward="true" selection-start-line="35" selection-end-line="35" />
+        <state relative-caret-position="575">
+          <caret line="31" lean-forward="true" selection-start-line="31" selection-end-line="31" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>

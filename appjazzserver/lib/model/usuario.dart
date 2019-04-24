@@ -2,18 +2,18 @@ import 'dart:async';
 import 'dart:core';
 import 'package:aqueduct/aqueduct.dart';
 
-class User extends ManagedObject<_User> implements _User {}
+class Usuario extends ManagedObject<_Usuario> implements _Usuario {}
 
-@Table(name: "users")
-class _User {
+@Table(name: "usuarios")
+class _Usuario {
   @Column(primaryKey: true,unique: true,autoincrement:true, databaseType: ManagedPropertyType.bigInteger)
   int id;
 
   @Column(unique: false)
-  String name;
+  String nome;
 
   @Column(unique: false)
-  String phone;
+  String telefone;
 
   @Column(unique: false)
   String cpf;
@@ -22,14 +22,14 @@ class _User {
   String email;
 
   @Column(unique: false)
-  String birth;
+  String dataNascimento;
 
   @Column(unique: false)
-  String sex;
+  String sexo;
 
   @Column(unique: false)
   String pass;
 
   @Column(unique: false)
-  DateTime registeredAt;
+  DateTime registradoEm;
 }

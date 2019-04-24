@@ -3,20 +3,20 @@ import 'dart:core';
 import 'package:aqueduct/aqueduct.dart';
 
 //importa os modelos
-import 'package:appjazz/model/food_place.dart';
+import 'package:appjazz/model/comercio_parceiro.dart';
 
 //este controle lista as atrações do festival
-class FoodPlaceController extends ResourceController {
+class ComercioParceiroController extends ResourceController {
   //contexto para acesso ao banco de dados
-  FoodPlaceController(this.context);
+  ComercioParceiroController(this.context);
 
   final ManagedContext context;
 
   //obtem todas
   @Operation.get()
-  Future<Response> getAllFoodPlaces() async {
-    final query = Query<FoodPlace>(context)
-      ..sortBy((i) => i.name, QuerySortOrder.ascending);
+  Future<Response> getAll() async {
+    final query = Query<ComercioParceiro>(context)
+      ..sortBy((i) => i.nome, QuerySortOrder.ascending);
 
     final item = await query.fetch();
     return Response.ok(item);
@@ -24,8 +24,8 @@ class FoodPlaceController extends ResourceController {
 
   //obtem um por id
   @Operation.get('id')
-  Future<Response> getFoodPlaceByID(@Bind.path('id') int id) async {
-    final query = Query<FoodPlace>(context)
+  Future<Response> getById(@Bind.path('id') int id) async {
+    final query = Query<ComercioParceiro>(context)
       ..where((i) => i.id).equalTo(id);
 
     final item = await query.fetchOne();
@@ -38,18 +38,18 @@ class FoodPlaceController extends ResourceController {
 
   //cria um
   @Operation.post()
-  Future<Response> createFoodPlace(@Bind.body() FoodPlace input) async {
-    final query = Query<FoodPlace>(context)..values = input;
+  Future<Response> create(@Bind.body() ComercioParceiro input) async {
+    final query = Query<ComercioParceiro>(context)..values = input;
     final item = await query.insert();
     return Response.ok(item);
   }
 
   //atualiza um
   @Operation.put('id')
-  Future<Response> updateHeroById(
-      @Bind.path('id') int id, @Bind.body() FoodPlace input) async {
+  Future<Response> update(
+      @Bind.path('id') int id, @Bind.body() ComercioParceiro input) async {
 
-    final query = Query<FoodPlace>(context)
+    final query = Query<ComercioParceiro>(context)
       ..where((i) => i.id).equalTo(id)
       ..values = input;
 
@@ -64,8 +64,8 @@ class FoodPlaceController extends ResourceController {
 
   //deleta um
   @Operation.delete('id')
-  Future<Response> deleteHeroByID(@Bind.path('id') int id) async {
-    final query = Query<FoodPlace>(context)
+  Future<Response> deleteById(@Bind.path('id') int id) async {
+    final query = Query<ComercioParceiro>(context)
       ..where((i) => i.id).equalTo(id);
 
     final item = await query.delete();

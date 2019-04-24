@@ -2,48 +2,48 @@ import 'dart:async';
 import 'dart:core';
 import 'package:aqueduct/aqueduct.dart';
 
-class FoodPlace extends ManagedObject<_FoodPlace> implements _FoodPlace {}
+class ComercioParceiro extends ManagedObject<_ComercioParceiro> implements _ComercioParceiro {}
 
-@Table(name: "foodPlaces")
-class _FoodPlace {
+@Table(name: "comerciosParceiro")
+class _ComercioParceiro {
 
   @Column(primaryKey: true,unique: true,autoincrement:true, databaseType: ManagedPropertyType.bigInteger)
   int id;
 
   @Column(unique: false,nullable: true)
-  String name;
+  String nome;
 
   @Column(unique: false,nullable: true)
-  String address;
+  String logradouro;
 
   @Column(unique: false,nullable: true)
-  String addressType;
+  String tipoLogradouro;
 
   @Column(unique: false,nullable: true)
-  String number;
+  String numero;
 
   @Column(unique: false,nullable: true)
-  String phone1;
+  String telefone1;
 
   @Column(unique: false,nullable: true)
-  String phone2;
+  String telefone2;
 
   @Column(unique: false,nullable: true)
-  String cuisineType;
+  String tipoCozinha;
 
   @Column(unique: false,nullable: true)
-  String placeType;
+  String tipoComercio;
 
   @Column(unique: false,nullable: true)
-  String openingHours;
+  String horarioFuncionamento;
 
   @Column(unique: false,nullable: true)
-  String neighborhood;
+  String bairro;
 
   @Column(unique: false,nullable: true)
-  String picture;
+  String imagem;
 
   @Column(unique: false,nullable: true)
-  String description;
+  String descricao;
 
 }

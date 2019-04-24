@@ -51,7 +51,7 @@ class AppjazzChannel extends ApplicationChannel {
     });
 
     //contexto para acesso ao banco de dados, injeção de dependência
-        
+
 
     router
         .route("/apoiadores/[:id]")

@@ -2,18 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c58ae4ba-b4df-48ab-b048-181556599f17" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/channel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/channel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/controller/attractions_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/controller/atracoes_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/controller/food_place_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/controller/comercio_parceiro_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/already_played_here.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/model/ja_passou_aqui.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/attraction.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/model/atracoes.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/festival_supporter.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/model/apoiador_festival.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/food_place.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/model/comercio_parceiro.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/general_data.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/model/general_data.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/lodging_place.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/model/usuario.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../appjazzserver/migrations/00000001_initial.migration.dart" beforeDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -200,7 +191,6 @@
   </component>
   <component name="ToolWindowManager">
     <frame x="-8" y="-8" width="1382" height="754" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.20801815" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />

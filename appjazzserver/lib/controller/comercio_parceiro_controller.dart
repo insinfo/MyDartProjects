@@ -15,11 +15,17 @@ class ComercioParceiroController extends ResourceController {
   //obtem todas
   @Operation.get()
   Future<Response> getAll() async {
-    final query = Query<ComercioParceiro>(context)
-      ..sortBy((i) => i.nome, QuerySortOrder.ascending);
+
+    final query = Query<ComercioParceiro>(context);
+    final totalRecords = (await query.fetch()).length;
+
+    query.sortBy((i) => i.nome, QuerySortOrder.ascending);
 
     final item = await query.fetch();
-    return Response.ok(item);
+    return Response.ok(item,headers:{
+      "total-records": totalRecords,
+      "Access-Control-Expose-Headers": "total-records"
+    });
   }
 
   //obtem um por id

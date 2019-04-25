@@ -12,14 +12,38 @@ class AtracoesController extends ResourceController {
 
   final ManagedContext context;
 
+  /*Map<String, dynamic> header = {
+    "totalRecords": "Bearer "
+  };*/
+
   //obtem todas atrações
   @Operation.get()
-  Future<Response> getAll() async {
-    final query = Query<Atracao>(context)
-      ..sortBy((attraction) => attraction.nome, QuerySortOrder.ascending);
+  Future<Response> getAll(
+      {@Bind.query('offset') int offset = -1,
+      @Bind.query('limit') int limit = -1,
+      @Bind.query('search') String search = ""}) async {
+    final query = Query<Atracao>(context);
+
+    if (search != null && search != "") {
+      query.predicate =
+          QueryPredicate("nome ilike @nome", {"nome": "%${search}%"});
+    }
+
+    final totalRecords = await query.reduce.count();
+
+    query.sortBy((attraction) => attraction.nome, QuerySortOrder.ascending);
+
+    if (offset != -1 && limit != -1) {
+      query.fetchLimit = limit;
+      query.offset = offset;
+    }
 
     final attractions = await query.fetch();
-    return Response.ok(attractions);
+
+    return Response.ok(attractions, headers: {
+      "total-records": totalRecords,
+      "Access-Control-Expose-Headers": "*"
+    });
   }
 
   //obtem uma atração por id
@@ -38,8 +62,7 @@ class AtracoesController extends ResourceController {
 
   //cria uma atração
   @Operation.post()
-  Future<Response> create(
-      @Bind.body() Atracao inputAttraction) async {
+  Future<Response> create(@Bind.body() Atracao inputAttraction) async {
     final query = Query<Atracao>(context)..values = inputAttraction;
     final insertedAttraction = await query.insert();
     return Response.ok(insertedAttraction);
@@ -74,5 +97,4 @@ class AtracoesController extends ResourceController {
     }
     return Response.ok(attraction);
   }
-
 }

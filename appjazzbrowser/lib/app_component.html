@@ -1,5 +1,52 @@
-<h1>{{title}}</h1>
 
-<attraction-list></attraction-list>
+<!-- page content-->
+<div class="page-content">
+
+    <div class="content-wrapper">
+
+        <!-- Page header -->
+        <div class="page-header page-header-light">
+            <div class="page-header-content header-elements-md-inline">
+                <div class="page-title d-flex">
+                    <h4><i class=""></i> <span class="font-weight-semibold">Administração</span> - App Jazz&Blues</h4>
+                    <a href="#" class="header-elements-toggle text-default d-md-none"><i class="icon-more"></i></a>
+                </div>
+
+                <div class="header-elements d-none">
+                    <div class="d-flex justify-content-center">
+                        <a [routerLink]="RoutePaths.atracoes.toUrl()" [routerLinkActive]="'active'"
+                           class="btn btn-link btn-float font-size-sm font-weight-semibold text-default legitRipple">
+                            <i class="icon-calendar5 text-pink-300"></i>
+                            <span>Atrações</span>
+                        </a>
+                        <a href="#"
+                           class="btn btn-link btn-float font-size-sm font-weight-semibold text-default legitRipple">
+                            <i class="icon-bars-alt text-pink-300"></i>
+                            <span>Statistics</span>
+                        </a>
+                        <a
+                           class="btn btn-link btn-float font-size-sm font-weight-semibold text-default legitRipple">
+                            <i class="icon-calculator text-pink-300"></i>
+                            <span>Invoices</span>
+                        </a>
+
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- /Page header -->
+
+        <!-- Content area -->
+        <div class="content">
+            <router-outlet [routes]="Routes.all"></router-outlet>
+
+
+        </div>
+        <!-- /Content area -->
+    </div>
+
+</div>
+<!-- /page content-->
 
 

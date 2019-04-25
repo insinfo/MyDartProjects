@@ -77,6 +77,22 @@ class AppjazzChannel extends ApplicationChannel {
         .route("/usuarios/[:id]")
         .link(() => UsuarioController(context));
 
+/*
+
+     Handles any route that starts with /file/
+     router
+        .route("/file/*")
+        .link(() => FileController());
+
+    @Operation.get()
+    Future<Response> getAllProjects(
+        @Bind.header("x-client-id") String clientId,
+        {@Bind.query("limit") int limit: 10}) async {
+      // GET /projects
+      return Response.ok();
+    } */
+ */
+
     return router;
   }
 }

@@ -37,15 +37,15 @@ class AppService {
 
   Future<RList<Atracao>> getAllAtracoes() async {
     try {
-      var response = await client.get(baseUrl + "/atracoes");//, headers: header
+      var response =
+          await client.get(baseUrl + "/atracoes"); //, headers: header
       if (response.statusCode == 200) {
-
         var list = new RList<Atracao>();
         var json = jsonDecode(response.body);
         if (json != null) {
           var totalReH = response.headers['total-records'];
           var totalRecords = totalReH != null ? int.parse(totalReH) : 0;
-          list.totalRecords =totalRecords;
+          list.totalRecords = totalRecords;
           json.forEach((v) {
             var item = new Atracao.fromJson(v);
             list.add(item);
@@ -60,4 +60,25 @@ class AppService {
       return null;
     }
   }
+
+  Future<Atracao> getAtracaoById(int id) async {
+    try {
+      var response = await client.get(baseUrl + "/atracoes/${id}"); //, headers: header
+      if (response.statusCode == 200) {
+        Atracao result;
+        var json = jsonDecode(response.body);
+        if (json != null) {
+          result = new Atracao.fromJson(json);
+        }
+        return result;
+      } else {
+        return null;
+      }
+    } catch (e) {
+      print("getAtracaoById: " + e.toString());
+      return null;
+    }
+  }
+
+
 }

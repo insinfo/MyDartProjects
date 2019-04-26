@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:core';
-
-class DadoGenerico {
+import '../serialization_interface.dart';
+class DadoGenerico implements ISerialization{
   int id;
   String historia;
   String palcos;
@@ -26,5 +26,15 @@ class DadoGenerico {
     json['edicoes'] = this.edicoes;
     json['logo'] = this.logo;
     return json;
+  }
+
+  List<Map<String, dynamic>> toDisplayNames() {
+    var list = new List<Map<String, dynamic>>();
+    list.add({"key":"id","type":"number","title":"Id"});
+    list.add({"key":"historia","type":"string","limit":60,"title":"História"});
+    list.add({"key":"palcos","type":"string","limit":60,"title":"Palcos"});
+    list.add({"key":"edicoes","type":"string","limit":60,"title":"Edições"});
+    list.add({"key":"logo","type":"img","title":"Logo"});
+    return list;
   }
 }

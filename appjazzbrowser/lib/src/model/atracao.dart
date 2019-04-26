@@ -1,8 +1,8 @@
 import 'dart:async';
 import 'dart:core';
-
+import '../serialization_interface.dart';
 //atrações
-class Atracao {
+class Atracao implements ISerialization{
   int id;
   String nome;
   String descricao;
@@ -44,5 +44,18 @@ class Atracao {
     json['video'] = this.video;
     json['media'] = this.media;
     return json;
+  }
+
+  List<Map<String, dynamic>> toDisplayNames() {
+    var list = new List<Map<String, dynamic>>();
+    list.add({"key":"id","type":"number","title":"Id"});
+    list.add({"key":"nome","type":"string","limit":60,"title":"Nome"});
+    list.add({"key":"ano","type":"number","title":"Ano"});
+    list.add({"key":"data","type":"number","title":"Data"});
+    list.add({"key":"descricao","type":"string","limit":60,"title":"Descrição"});
+    list.add({"key":"video","type":"url","title":"Video"});
+    list.add({"key":"media","type":"url","title":"Media"});
+    list.add({"key":"imagem","type":"img","title":"Imagem"});
+   return list;
   }
 }

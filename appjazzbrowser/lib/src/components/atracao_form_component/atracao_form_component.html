@@ -1,12 +1,8 @@
-<!--
-<div>
-    <label>Nome </label>
-    <input [(ngModel)]="atracao.nome" placeholder="nome">
-</div>
--->
+
+<md-toast #toastElement></md-toast>
 
 <!-- Basic layout-->
-<div class="card">
+<div class="card" *ngIf="atracao != null">
     <div class="card-header header-elements-inline">
         <h5 class="card-title">Atração</h5>
         <div class="header-elements">
@@ -24,21 +20,27 @@
 
             <div class="form-group">
                 <label>Ano:</label>
-                <input type="text" class="form-control" placeholder="ano">
+                <input [(ngModel)]="atracao.ano" type="text" class="form-control" placeholder="ano">
             </div>
 
             <div class="form-group">
                 <label>Descrição:</label>
-                <textarea rows="5" cols="5" class="form-control" placeholder="entre com uma breve descrição"></textarea>
+                <textarea [(ngModel)]="atracao.descricao" rows="5" cols="5" class="form-control"
+                          placeholder="entre com uma breve descrição"></textarea>
             </div>
 
             <div class="text-right">
-                <button type="submit" class="btn btn-primary">Salvar<i class="icon-paperplane ml-2"></i></button>
+                <button class="btn bg-pink-400" (click)="goBack()">
+                    Voltar<i class="icon-paperplane ml-2"></i>
+                </button>
+                <button class="btn btn-primary" (click)="save()">
+                    Salvar<i class="icon-paperplane ml-2"></i>
+                </button>
             </div>
+
         </form>
     </div>
 </div>
 <!-- /basic layout -->
-
 
 

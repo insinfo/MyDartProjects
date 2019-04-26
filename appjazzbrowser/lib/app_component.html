@@ -1,4 +1,3 @@
-
 <!-- page content-->
 <div class="page-content">
 
@@ -25,7 +24,7 @@
                             <span>Statistics</span>
                         </a>
                         <a
-                           class="btn btn-link btn-float font-size-sm font-weight-semibold text-default legitRipple">
+                                class="btn btn-link btn-float font-size-sm font-weight-semibold text-default legitRipple">
                             <i class="icon-calculator text-pink-300"></i>
                             <span>Invoices</span>
                         </a>
@@ -39,8 +38,15 @@
 
         <!-- Content area -->
         <div class="content">
+            <div *ngIf="alertOutlet != null">
+                <div class="alert bg-success text-white alert-dismissible">
+                    <button type="button" class="close" data-dismiss="alert">
+                        <span>×</span>
+                    </button>
+                    <span class="font-weight-semibold">{{alertOutlet}}</span>
+                </div>
+            </div>
             <router-outlet [routes]="Routes.all"></router-outlet>
-
 
         </div>
         <!-- /Content area -->

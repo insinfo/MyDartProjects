@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:core';
-
-class Usuario {
+import '../serialization_interface.dart';
+class Usuario implements ISerialization{
   int id;
   String nome;
   String telefone;
@@ -47,5 +47,18 @@ class Usuario {
     json['pass'] = this.pass;
     json['registradoEm'] = this.registradoEm;
     return json;
+  }
+
+  List<Map<String, dynamic>> toDisplayNames() {
+    var list = new List<Map<String, dynamic>>();
+    list.add({"key":"id","type":"number","title":"Id"});
+    list.add({"key":"nome","type":"string","limit":60,"title":"Nome"});
+    list.add({"key":"telefone","type":"string","title":"Telefone"});
+    list.add({"key":"cpf","type":"cpf","title":"CPF"});
+    list.add({"key":"email","type":"email","title":"Email"});
+    list.add({"key":"dataNascimento","type":"date","title":"Nascimento"});
+    list.add({"key":"sexo","type":"string","title":"Sexo"});
+    list.add({"key":"registradoEm","type":"date","title":"Registrado"});
+    return list;
   }
 }

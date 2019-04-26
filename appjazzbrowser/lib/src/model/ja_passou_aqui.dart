@@ -1,7 +1,7 @@
 import 'dart:async';
 import 'dart:core';
-
-class JaPassouAqui {
+import '../serialization_interface.dart';
+class JaPassouAqui implements ISerialization{
   int id;
   String nome;
   DateTime data;
@@ -23,5 +23,14 @@ class JaPassouAqui {
     json['data'] = this.data;
     json['descricao'] = this.descricao;
     return json;
+  }
+
+  List<Map<String, dynamic>> toDisplayNames() {
+    var list = new List<Map<String, dynamic>>();
+    list.add({"key":"id","type":"number","title":"Id"});
+    list.add({"key":"nome","type":"string","limit":60,"title":"Nome"});
+    list.add({"key":"data","type":"date","title":"Data"});
+    list.add({"key":"descricao","type":"string","limit":60,"title":"Descrição"});
+    return list;
   }
 }

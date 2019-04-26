@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:core';
+import '../serialization_interface.dart';
 
-class ApoiadorFestival {
+class ApoiadorFestival implements ISerialization{
   int id;
   String nome;
   String logo;
@@ -23,5 +24,14 @@ class ApoiadorFestival {
     json['logo'] = this.logo;
     json['tipo'] = this.tipo;
     return json;
+  }
+
+  List<Map<String, dynamic>> toDisplayNames() {
+    var list = new List<Map<String, dynamic>>();
+    list.add({"key":"id","type":"number"});
+    list.add({"key":"nome","type":"string","limit":60});
+    list.add({"key":"logo","type":"img"});
+    list.add({"key":"tipo","type":"string"});
+    return list;
   }
 }

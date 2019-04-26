@@ -1,7 +1,8 @@
 import 'dart:async';
 import 'dart:core';
+import '../serialization_interface.dart';
 
-class ComercioParceiro {
+class ComercioParceiro implements ISerialization{
   int id;
   String nome;
   String logradouro;
@@ -63,5 +64,22 @@ class ComercioParceiro {
     json['imagem'] = this.imagem;
     json['descricao'] = this.descricao;
     return json;
+  }
+
+  List<Map<String, dynamic>> toDisplayNames() {
+    var list = new List<Map<String, dynamic>>();
+    list.add({"key":"id","type":"number","title":"Id"});
+    list.add({"key":"nome","type":"string","limit":60,"title":"Nome"});
+    list.add({"key":"tipoLogradouro","type":"string","title":"Tipo"});
+    list.add({"key":"logradouro","type":"string","title":"Logradouro"});
+    list.add({"key":"numero","type":"string","title":"Número"});
+    list.add({"key":"telefone1","type":"string","title":"Telefone 1"});
+    list.add({"key":"telefone2","type":"string","title":"Telefone 2"});
+    list.add({"key":"tipoComercio","type":"string","title":"Tipo"});
+    list.add({"key":"horarioFuncionamento","type":"string","title":"Funcionamneto"});
+    list.add({"key":"bairro","type":"string","title":"Bairro"});
+    list.add({"key":"imagem","type":"img","title":"Imagem"});
+    list.add({"key":"descricao","type":"string","limit":60,"title":"Descrição"});
+    return list;
   }
 }

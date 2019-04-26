@@ -1,21 +1,18 @@
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
-
 //models
 import '../../model/atracao.dart';
-
 //serviços
 import '../../services/app_service.dart';
-
 //pipes
 import '../../truncate_pipe.dart';
-
 //helpers
 import '../../response_list.dart';
-
 //components
 import '../atracao_form_component/atracao_form_component.dart';
+import '../data_table_component/data_table_component.dart';
+//rotas
 import '../../route_paths.dart';
 
 @Component(
@@ -27,12 +24,16 @@ import '../../route_paths.dart';
     formDirectives,
     coreDirectives,
     routerDirectives,
-    AtracaoFormComponent
+    AtracaoFormComponent,
+    DataTableComponent
   ],
   pipes: [commonPipes, TruncatePipe],
   providers: [ClassProvider(AppService)],
 )
 class AtracaoListComponent implements OnInit {
+  @ViewChild('dataTable')
+  DataTableComponent dataTable;
+
   RList<Atracao> atracoes;
   Atracao selected;
   Router _router;
@@ -47,12 +48,12 @@ class AtracaoListComponent implements OnInit {
     this.atracoes = await _appService.getAllAtracoes();
   }
 
+  /*void _getAllAtracoes() {
+    _appService.getAllAtracoes().then((atracoes) => this.atracoes = atracoes);
+  }*/
+
   String atracaoUrl(int id) =>
       RoutePaths.atracao.toUrl(parameters: {'id': '$id'});
-
-  /*void _getAttractions() {
-    _attractionService.getAll().then((attractions) => this._attractions = attractions);
-  }*/
 
   Future<NavigationResult> gotoDetail() =>
       _router.navigate(atracaoUrl(selected.id));

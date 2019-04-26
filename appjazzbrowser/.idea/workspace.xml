@@ -2,39 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c58ae4ba-b4df-48ab-b048-181556599f17" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/model/apoiador_festival.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/model/atracao.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/model/comercio_parceiro.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/model/dado_generico.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/model/ja_passou_aqui.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/model/usuario.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/response_list.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/routes.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/services/app_service.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/lib/src/truncate_pipe.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app_component.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app_component.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/app_component.html" beforeDir="false" afterPath="$PROJECT_DIR$/lib/app_component.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/components/attractions_form_component.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/components/attractions_list_component.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/model/attraction.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.html" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.html" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/route_paths.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/route_paths.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/services/attraction_service.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/templates/attractions_form_component.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/templates/attractions_list_component.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/routes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/routes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/services/app_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/services/app_service.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/app_test.dart" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/web/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/styles.css" beforeDir="false" afterPath="$PROJECT_DIR$/web/styles.css" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/channel.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/channel.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/controller/atracao_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/controller/atracao_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/controller/comercio_parceiro_controller.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/controller/comercio_parceiro_controller.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../appjazzserver/lib/model/atracao.dart" beforeDir="false" afterPath="$PROJECT_DIR$/../appjazzserver/lib/model/atracao.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -49,34 +27,25 @@
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/app_component.dart">
+        <entry file="file://$PROJECT_DIR$/lib/src/services/app_service.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+            <state relative-caret-position="369">
+              <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
               <folding>
-                <element signature="e#0#38#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.dart">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
-              <folding>
-                <element signature="e#0#38#0" expanded="true" />
+                <element signature="e#0#20#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/lib/src/services/app_service.dart">
+        <entry file="file://$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.dart">
           <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+            <state relative-caret-position="368">
+              <caret line="61" column="14" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -84,8 +53,32 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-36">
-              <caret line="74" column="21" lean-forward="true" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
+            <state relative-caret-position="55">
+              <caret line="61" column="60" selection-start-line="61" selection-start-column="60" selection-end-line="61" selection-end-column="60" />
+              <folding>
+                <element signature="n#div#2;n#div#2;n#div#0;n#!!top" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.dart">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="92">
+              <caret line="45" column="3" lean-forward="true" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="3" />
+              <folding>
+                <element signature="e#0#38#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.html">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="344">
+              <caret line="21" column="50" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
             </state>
           </provider>
         </entry>
@@ -113,26 +106,26 @@
         <option value="$PROJECT_DIR$/lib/src/components/atracoes_form_component/atracoes_form_component.dart" />
         <option value="$PROJECT_DIR$/lib/src/components/atracoes_list_component/atracoes_list_component.dart" />
         <option value="$PROJECT_DIR$/lib/src/components/atracao_list_component/atracoes_list_component.dart" />
-        <option value="$PROJECT_DIR$/lib/src/route_paths.dart" />
         <option value="$PROJECT_DIR$/web/styles.css" />
-        <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/web/main.dart" />
-        <option value="$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.dart" />
-        <option value="$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.html" />
         <option value="$PROJECT_DIR$/lib/src/atracao_form_component/atracao_form_component.dart" />
         <option value="$PROJECT_DIR$/lib/src/atracao_list_component/atracao_list_component.dart" />
         <option value="$PROJECT_DIR$/lib/app_component.dart" />
-        <option value="$PROJECT_DIR$/lib/src/routes.dart" />
-        <option value="$PROJECT_DIR$/web/index.html" />
         <option value="$PROJECT_DIR$/lib/app_component.html" />
         <option value="$PROJECT_DIR$/lib/src/model/ja_passou_aqui.dart" />
         <option value="$PROJECT_DIR$/lib/src/model/usuario.dart" />
         <option value="$PROJECT_DIR$/lib/src/truncate_pipe.dart" />
-        <option value="$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.html" />
         <option value="$PROJECT_DIR$/lib/src/model/atracao.dart" />
         <option value="$PROJECT_DIR$/lib/src/response_list.dart" />
+        <option value="$PROJECT_DIR$/lib/src/route_paths.dart" />
+        <option value="$PROJECT_DIR$/lib/src/routes.dart" />
+        <option value="$PROJECT_DIR$/web/index.html" />
+        <option value="$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.html" />
+        <option value="$PROJECT_DIR$/pubspec.yaml" />
         <option value="$PROJECT_DIR$/lib/src/services/app_service.dart" />
         <option value="$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.dart" />
+        <option value="$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.html" />
+        <option value="$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.dart" />
       </list>
     </option>
   </component>
@@ -165,6 +158,36 @@
               <item name="appjazzbrowser" type="462c0819:PsiDirectoryNode" />
               <item name="lib" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="appjazzbrowser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="appjazzbrowser" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="appjazzbrowser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="appjazzbrowser" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="atracao_form_component" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="appjazzbrowser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="appjazzbrowser" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="components" type="462c0819:PsiDirectoryNode" />
+              <item name="atracao_list_component" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="appjazzbrowser" type="b2602c69:ProjectViewProjectNode" />
+              <item name="appjazzbrowser" type="462c0819:PsiDirectoryNode" />
+              <item name="lib" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="model" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="appjazzbrowser" type="b2602c69:ProjectViewProjectNode" />
@@ -265,7 +288,7 @@
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" weight="0.32850242" />
       <window_info anchor="bottom" id="Dart Analysis" order="7" weight="0.32850242" />
-      <window_info active="true" anchor="bottom" id="Terminal" order="8" visible="true" weight="0.3800322" />
+      <window_info anchor="bottom" id="Terminal" order="8" weight="0.9516908" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
       <window_info anchor="bottom" id="Version Control" order="10" />
       <window_info anchor="bottom" id="Flutter Performance" order="11" side_tool="true" />
@@ -329,13 +352,6 @@
     <entry file="file://$PROJECT_DIR$/web/styles.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
-    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
-      <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret column="20" selection-start-column="20" selection-end-column="20" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/todo_list/todo_list_component.css">
       <provider selected="true" editor-type-id="text-editor" />
     </entry>
@@ -349,41 +365,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/web/main.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="58" selection-start-line="2" selection-start-column="44" selection-end-line="2" selection-end-column="58" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/route_paths.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="23" selection-start-line="3" selection-start-column="15" selection-end-line="3" selection-end-column="23" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" selection-start-line="2" selection-end-line="2" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/web/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="48">
-          <caret line="24" column="23" selection-start-line="24" selection-start-column="23" selection-end-line="24" selection-end-column="23" />
         </state>
       </provider>
     </entry>
@@ -394,26 +379,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="269">
           <caret line="16" column="99" selection-start-line="16" selection-start-column="99" selection-end-line="16" selection-end-column="99" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/routes.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="189">
-          <caret line="9" lean-forward="true" selection-start-line="9" selection-end-line="9" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/app_component.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="11" column="11" lean-forward="true" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
-          <folding>
-            <element signature="e#0#38#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -474,23 +439,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/model/atracao.dart">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="13" selection-start-line="13" selection-end-line="13" />
-          <folding>
-            <element signature="e#0#20#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-36">
-          <caret line="74" column="21" lean-forward="true" selection-start-line="74" selection-start-column="21" selection-end-line="74" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/response_list.dart">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -498,17 +446,108 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/routes.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="18" lean-forward="true" selection-start-line="18" selection-end-line="18" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/route_paths.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="9" column="46" lean-forward="true" selection-start-line="9" selection-start-column="46" selection-end-line="9" selection-end-column="46" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/model/atracao.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="271">
+          <caret line="13" lean-forward="true" selection-start-line="5" selection-start-column="1" selection-end-line="13" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/web/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="372">
+          <caret line="39" column="22" selection-start-line="39" selection-start-column="22" selection-end-line="39" selection-end-column="22" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/AppData/Roaming/Pub/Cache/hosted/pub.dartlang.org/http-0.11.3+17/lib/browser_client.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-304">
+          <caret line="25" column="19" selection-start-line="25" selection-start-column="6" selection-end-line="25" selection-end-column="19" />
+          <folding>
+            <element signature="e#0#3638#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/pubspec.yaml">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="7" selection-start-line="14" selection-start-column="7" selection-end-line="14" selection-end-column="7" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/app_component.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="231">
+          <caret line="11" column="11" selection-start-line="11" selection-start-column="11" selection-end-line="11" selection-end-column="11" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/services/app_service.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <caret line="6" lean-forward="true" selection-start-line="6" selection-end-line="6" />
+        <state relative-caret-position="369">
+          <caret line="32" column="2" selection-start-line="32" selection-start-column="2" selection-end-line="32" selection-end-column="2" />
+          <folding>
+            <element signature="e#0#20#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.dart">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="44" lean-forward="true" selection-start-line="44" selection-end-line="44" />
+        <state relative-caret-position="368">
+          <caret line="61" column="14" selection-start-line="61" selection-start-column="14" selection-end-line="61" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#38#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/components/atracao_list_component/atracao_list_component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="55">
+          <caret line="61" column="60" selection-start-line="61" selection-start-column="60" selection-end-line="61" selection-end-column="60" />
+          <folding>
+            <element signature="n#div#2;n#div#2;n#div#0;n#!!top" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="344">
+          <caret line="21" column="50" selection-start-line="21" selection-start-column="50" selection-end-line="21" selection-end-column="50" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/lib/src/components/atracao_form_component/atracao_form_component.dart">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="92">
+          <caret line="45" column="3" lean-forward="true" selection-start-line="45" selection-start-column="3" selection-end-line="45" selection-end-column="3" />
           <folding>
             <element signature="e#0#38#0" expanded="true" />
           </folding>

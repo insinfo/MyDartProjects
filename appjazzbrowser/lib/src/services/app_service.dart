@@ -2,7 +2,7 @@ import 'dart:async';
 import 'dart:convert';
 import 'dart:html';
 
-import 'package:http/http.dart' as http;
+import 'package:http/browser_client.dart';
 import 'package:angular/core.dart';
 
 import '../model/usuario.dart';
@@ -30,11 +30,14 @@ class AppService {
     //access_token
   };*/
 
+  static Object objectTransfer;
+
   String baseUrl = "http://localhost:8888";
+  BrowserClient client = new BrowserClient();
 
   Future<RList<Atracao>> getAllAtracoes() async {
     try {
-      var response = await http.get(baseUrl + "/atracoes");//, headers: header
+      var response = await client.get(baseUrl + "/atracoes");//, headers: header
       if (response.statusCode == 200) {
 
         var list = new RList<Atracao>();

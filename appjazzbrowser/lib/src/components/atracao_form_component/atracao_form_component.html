@@ -1,7 +1,44 @@
-<h2>Cadastro de Atração do Festival</h2>
 <!--
 <div>
     <label>Nome </label>
     <input [(ngModel)]="atracao.nome" placeholder="nome">
 </div>
 -->
+
+<!-- Basic layout-->
+<div class="card">
+    <div class="card-header header-elements-inline">
+        <h5 class="card-title">Atração</h5>
+        <div class="header-elements">
+            <div class="list-icons">
+            </div>
+        </div>
+    </div>
+    <!--   -->
+    <div class="card-body">
+        <form action="#">
+            <div class="form-group">
+                <label>Nome:</label>
+                <input [(ngModel)]="atracao.nome" type="text" class="form-control" placeholder="nome">
+            </div>
+
+            <div class="form-group">
+                <label>Ano:</label>
+                <input type="text" class="form-control" placeholder="ano">
+            </div>
+
+            <div class="form-group">
+                <label>Descrição:</label>
+                <textarea rows="5" cols="5" class="form-control" placeholder="entre com uma breve descrição"></textarea>
+            </div>
+
+            <div class="text-right">
+                <button type="submit" class="btn btn-primary">Salvar<i class="icon-paperplane ml-2"></i></button>
+            </div>
+        </form>
+    </div>
+</div>
+<!-- /basic layout -->
+
+
+

@@ -8,6 +8,9 @@ import 'package:angular_router/angular_router.dart';
 import '../../serialization_interface.dart';
 import '../../response_list.dart';
 
+//utils
+import 'utils.dart';
+
 @Component(
   selector: 'data-table',
   templateUrl: 'data_table_component.html',
@@ -40,6 +43,15 @@ class DataTableComponent implements OnInit, AfterChanges {
   RList<ISerialization> get data {
     return _data;
   }
+
+  final NodeValidatorBuilder _htmlValidator = new NodeValidatorBuilder.common()
+    ..allowHtml5()
+    ..allowImages()
+    ..allowInlineStyles()
+    ..allowTextElements()
+    ..allowSvg()
+    ..allowElement('a', attributes: ['href'])
+    ..allowElement('img', attributes: ['src']);
 
   @override
   void ngOnInit() {
@@ -74,7 +86,9 @@ class DataTableComponent implements OnInit, AfterChanges {
           tableTh += "<th>${title}</th>";
         }
 
-        tableElement.querySelector('thead tr').innerHtml = tableTh;
+        tableElement
+            .querySelector('thead tr')
+            .setInnerHtml(tableTh, treeSanitizer: NodeTreeSanitizer.trusted);
 
         var trs = "";
 
@@ -89,17 +103,33 @@ class DataTableComponent implements OnInit, AfterChanges {
             var title = col.containsKey('title') ? col['title'] : null;
             var type = col.containsKey('type') ? col['type'] : null;
             var limit = col.containsKey('limit') ? col['limit'] : null;
+            var format = col.containsKey('format') ? col['format'] : null;
             var tdContent = "";
 
             switch (type.toString()) {
               case 'date':
-                if (row[key]) {
-                  var formatter = new DateFormat('dd/MM/yyyy');
-                  var date = DateTime.tryParse(row[key]);
+                if (row[key] != null) {
+                  var fmt = format == null ? 'dd/MM/yyyy' : format;
+                  var formatter = new DateFormat(fmt);
+                  var date = DateTime.tryParse(row[key].toString());
                   if (date != null) {
                     tdContent = formatter.format(date);
                   }
                 }
+                break;
+              case 'string':
+                var str = row[key.toString()].toString();
+                if (limit != null) {
+                  str = Utils.truncate(str, limit);
+                }
+                tdContent = str;
+                break;
+              case 'img':
+                var src = row[key.toString()].toString();
+                var img = ImageElement();
+                img.src = src;
+                img.height = 40;
+                tdContent = img.outerHtml;
                 break;
               default:
                 tdContent = row[key.toString()].toString();
@@ -111,7 +141,9 @@ class DataTableComponent implements OnInit, AfterChanges {
           trs += "<tr>${tds}</tr>";
         }
 
-        tableElement.querySelector('tbody').innerHtml = trs;
+        tableElement
+            .querySelector('tbody')
+            .setInnerHtml(trs, treeSanitizer: NodeTreeSanitizer.trusted);
       }
     }
   }

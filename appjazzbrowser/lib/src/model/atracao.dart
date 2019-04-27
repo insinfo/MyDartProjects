@@ -22,6 +22,7 @@ class Atracao implements ISerialization{
       this.video,
       this.media});
 
+
   Atracao.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
     this.nome = json['nome'];
@@ -51,7 +52,7 @@ class Atracao implements ISerialization{
     list.add({"key":"id","type":"number","title":"Id"});
     list.add({"key":"nome","type":"string","limit":60,"title":"Nome"});
     list.add({"key":"ano","type":"number","title":"Ano"});
-    list.add({"key":"data","type":"number","title":"Data"});
+    list.add({"key":"data","type":"date","title":"Data"});
     list.add({"key":"descricao","type":"string","limit":60,"title":"Descrição"});
     list.add({"key":"video","type":"url","title":"Video"});
     list.add({"key":"media","type":"url","title":"Media"});
@@ -59,3 +60,4 @@ class Atracao implements ISerialization{
    return list;
   }
 }
+

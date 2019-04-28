@@ -26,7 +26,7 @@ import 'utils.dart';
 //A Material Design table component for AngularDart OnChanges
 class DataTableComponent implements OnInit, AfterChanges {
   @ViewChild("tableElement") //HtmlElement
-  HtmlElement tableElement;
+  TableElement tableElement;
 
   @Input()
   bool showFilter = true;
@@ -44,6 +44,15 @@ class DataTableComponent implements OnInit, AfterChanges {
     return _data;
   }
 
+  final _deleteRequest = StreamController<int>();
+
+  @Output()
+  Stream<int> get deleteRequest => _deleteRequest.stream;
+
+  void delete() {
+    _deleteRequest.add(10);
+  }
+
   final NodeValidatorBuilder _htmlValidator = new NodeValidatorBuilder.common()
     ..allowHtml5()
     ..allowImages()
@@ -59,7 +68,14 @@ class DataTableComponent implements OnInit, AfterChanges {
     //toastDiv.classes.add('mdt--load');
     //this.e.nativeElement.setAttribute("spellcheck", "true");
     // draw();
-    print(tableElement);
+
+    //tableElement.addEventListener("click", onRowClick());
+
+    /*tableElement.querySelector("tbody").addEventListener("click",(event) {
+      HtmlElement clickedElement = event.currentTarget;
+      var itemId = clickedElement.tagName;
+      print(itemId);
+    });*/
   }
 
   /*@override
@@ -77,27 +93,29 @@ class DataTableComponent implements OnInit, AfterChanges {
       if (_data.isNotEmpty) {
         List<Map<String, dynamic>> columns = _data[0].toDisplayNames();
 
-        var tableTh = "";
+        Element tableHead = tableElement.createTHead();
+        TableRowElement tableHeaderRow = tableElement.tHead.insertRow(-1);
+
         for (final col in columns) {
           var key = col.containsKey('key') ? col['key'] : null;
           var title = col.containsKey('title') ? col['title'] : null;
           var type = col.containsKey('type') ? col['type'] : null;
           var limit = col.containsKey('limit') ? col['limit'] : null;
-          tableTh += "<th>${title}</th>";
+
+          var th = new Element.tag('th');
+          th.text = title;
+          tableHeaderRow.insertAdjacentElement('beforeend', th);
         }
 
-        tableElement
-            .querySelector('thead tr')
-            .setInnerHtml(tableTh, treeSanitizer: NodeTreeSanitizer.trusted);
-
-        var trs = "";
-
+        TableSectionElement tBody = tableElement.createTBody();
         for (final item in _data) {
           var row = item.toJson();
+          TableRowElement tableRow = tBody.insertRow(-1);
+          tableRow.addEventListener("click", (event) {
+            HtmlElement clickedElement = event.currentTarget;
+            onRowClick();
+          });
 
-          /*tds.forEach((key, value) {
-          });*/
-          var tds = "";
           for (final col in columns) {
             var key = col.containsKey('key') ? col['key'] : null;
             var title = col.containsKey('title') ? col['title'] : null;
@@ -134,22 +152,18 @@ class DataTableComponent implements OnInit, AfterChanges {
               default:
                 tdContent = row[key.toString()].toString();
             }
-
-            tds += "<td>${tdContent}</td>";
+            var td = new Element.tag('td');
+            td.setInnerHtml(tdContent,
+                treeSanitizer: NodeTreeSanitizer.trusted);
+            ;
+            tableRow.insertAdjacentElement('beforeend', td);
           }
-
-          trs += "<tr>${tds}</tr>";
         }
-
-        tableElement
-            .querySelector('tbody')
-            .setInnerHtml(trs, treeSanitizer: NodeTreeSanitizer.trusted);
       }
     }
   }
 
-/*void showToast(String message){
-    toastDiv.style.backgroundColor = color;
-    toastDiv.classes.remove('mdt--load');
-  }*/
+  onRowClick() {
+    print("onRowClick");
+  }
 }

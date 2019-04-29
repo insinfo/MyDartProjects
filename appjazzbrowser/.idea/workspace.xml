@@ -2,11 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c58ae4ba-b4df-48ab-b048-181556599f17" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/lib/src/components/data_table_component/utils.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/components/data_table_component/data_table_component.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/components/data_table_component/data_table_component.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/model/atracao.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/model/atracao.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/serialization_interface.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/serialization_interface.dart" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -294,7 +290,14 @@
       <option name="project" value="LOCAL" />
       <updated>1556318904456</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="avanço na implementação de componente generico de datatable">
+      <created>1556371606053</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1556371606054</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TimeTrackingManager">

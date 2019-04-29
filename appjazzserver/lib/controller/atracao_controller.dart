@@ -40,6 +40,8 @@ class AtracoesController extends ResourceController {
 
     final attractions = await query.fetch();
 
+    //await Future.delayed(Duration(seconds: 20));
+
     return Response.ok(attractions, headers: {
       "total-records": totalRecords,
       "Access-Control-Expose-Headers": "*"

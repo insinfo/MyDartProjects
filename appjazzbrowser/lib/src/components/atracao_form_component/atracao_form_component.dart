@@ -14,7 +14,7 @@ import '../../services/app_service.dart';
 import '../../truncate_pipe.dart';
 
 //helpers
-import '../../response_list.dart';
+import '../data_table_component/response_list.dart';
 
 //components
 import '../md_toast_component/md_toast_component.dart';

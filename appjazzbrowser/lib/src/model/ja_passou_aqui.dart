@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'dart:core';
-import '../serialization_interface.dart';
+import '../components/data_table_component/serialization_interface.dart';
 class JaPassouAqui implements ISerialization{
   int id;
   String nome;

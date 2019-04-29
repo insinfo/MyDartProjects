@@ -12,7 +12,8 @@ import '../model/apoiador_festival.dart';
 import '../model/ja_passou_aqui.dart';
 import '../model/dado_generico.dart';
 
-import '../response_list.dart';
+import '../components/data_table_component/response_list.dart';
+import '../components/data_table_component/data_table_filter.dart';
 
 /// Mock service emulating access to a to-do list stored on a server.
 @Injectable()
@@ -35,12 +36,17 @@ class AppService {
   String baseUrl = "http://localhost:8888";
   BrowserClient client = new BrowserClient();
 
-  Future<RList<Atracao>> getAllAtracoes() async {
+  Future<RList<Atracao>> getAllAtracoes({DataTableFilter filters}) async {
     try {
-      var response =
-          await client.get(baseUrl + "/atracoes"); //, headers: header
+      var endPoit = "/atracoes";
+      if (filters != null) {
+        endPoit += filters.toUrlParams();
+      }
+
+      var list = new RList<Atracao>();
+
+      var response = await client.get(baseUrl + endPoit); //, headers: header
       if (response.statusCode == 200) {
-        var list = new RList<Atracao>();
         var json = jsonDecode(response.body);
         if (json != null) {
           var totalReH = response.headers['total-records'];
@@ -51,10 +57,10 @@ class AppService {
             list.add(item);
           });
         }
-        return list;
-      } else {
-        return null;
       }
+
+      return list;
+
     } catch (e) {
       print("getAllAtracoes: " + e.toString());
       return null;
@@ -63,7 +69,8 @@ class AppService {
 
   Future<Atracao> getAtracaoById(int id) async {
     try {
-      var response = await client.get(baseUrl + "/atracoes/${id}"); //, headers: header
+      var response =
+          await client.get(baseUrl + "/atracoes/${id}"); //, headers: header
       if (response.statusCode == 200) {
         Atracao result;
         var json = jsonDecode(response.body);
@@ -79,6 +86,4 @@ class AppService {
       return null;
     }
   }
-
-
 }

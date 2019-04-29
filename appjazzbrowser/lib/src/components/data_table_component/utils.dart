@@ -14,4 +14,18 @@ class Utils {
     }
     return truncated;
   }
+
+  /*To use it just:
+addEventForChild(parent, 'click', '.child', function(childElement){
+  console.log('Woo click!', childElement)
+})*/
+  static void addEventForChild(parent, eventName, childSelector, cb) {
+    parent.addEventListener(eventName, (event) {
+      var clickedElement = event.target,
+          matchingChild = clickedElement.closest(childSelector);
+      if (matchingChild) {
+        cb(matchingChild);
+      }
+    });
+  }
 }

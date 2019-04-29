@@ -2,15 +2,15 @@
 
     <div class="datatable-header">
         <div class="dataTables_filter" *ngIf="showFilter">
-            <label><span>Filtrar:</span>
-                <input type="search" class="" placeholder="Digite para filtrar..."
-                >
+            <label>
+                <span>Filtrar:</span>
+                <input #inputSearchElement type="search" class="" placeholder="Digite e tecle enter para buscar...">
             </label>
         </div>
         <div class="dataTables_length" *ngIf="showItemsLimit">
             <label>
                 <span>Exibir:</span>
-                <select name="" class="">
+                <select #itemsPerPageElement (change)="onLimitChange()" name="" class="">
                     <option value="10">10</option>
                     <option value="25">25</option>
                     <option value="50">50</option>
@@ -22,26 +22,17 @@
 
     <div class="datatable-scroll">
         <table #tableElement class="table datatable-basic dataTable no-footer" role="grid">
-            <thead>
-            <tr role="row"></tr>
-            </thead>
-            <tbody>
-            <tr role="row"></tr>
-            </tbody>
         </table>
     </div>
 
     <div class="datatable-footer">
         <div class="dataTables_info" role="status" aria-live="polite">
-            Showing 1 to 10 of 15 entries
+            Total de registros:<span [innerHtml]="' '+totalRecords.toString()"></span>
         </div>
-        <div class="dataTables_paginate paging_simple_numbers" id="DataTables_Table_0_paginate">
-            <a class="paginate_button previous disabled">←</a>
-            <span>
-                    <a class="paginate_button current">1</a>
-                    <a class="paginate_button">2</a>
-                </span>
-            <a class="paginate_button next">→</a>
+        <div #paginateDiv class="dataTables_paginate paging_simple_numbers" >
+            <a #paginatePrevBtn class="paginate_button previous disabled">←</a>
+            <span #paginateContainer></span>
+            <a #paginateNextBtn class="paginate_button next">→</a>
         </div>
     </div>
 

@@ -1,27 +1,15 @@
 import 'dart:async';
 import 'dart:core';
 import 'package:aqueduct/aqueduct.dart';
-import 'palco.dart';
+import 'atracao.dart';
 import 'palco_atracao.dart';
 
-class Atracao extends ManagedObject<_Atracao> implements _Atracao {
-
-  /*@Serialize()
-  int teste =0; // included in asMap, read in read
-
-  @Serialize(input: true, output: false)
-  int c =2; // NOT included in asMap, read in read
-
-  @Serialize(input: false, output: true)
-  int d=3; // included in asMap, NOT read in read
-
-  @Serialize()
-  String get transientValue => "dff";*/
+class Palco extends ManagedObject<_Palco> implements _Palco {
 }
 
-//atrações
-@Table(name: "atracoes")
-class _Atracao {
+//palcos
+@Table(name: "palcos")
+class _Palco {
 
   @Column(primaryKey: true,unique: true,autoincrement:true, databaseType: ManagedPropertyType.bigInteger)
   int id;
@@ -33,16 +21,22 @@ class _Atracao {
   String descricao;
 
   @Column(unique: false,nullable: true)
-  DateTime data;
-
-  @Column(unique: false,nullable: true)
   String imagem;
 
   @Column(unique: false,nullable: true)
   String video;
 
   @Column(unique: false,nullable: true)
-  String media;
+  String logradouro;
+
+  @Column(unique: false,nullable: true)
+  String tipoLogradouro;
+
+  @Column(unique: false,nullable: true)
+  String numero;
+
+  @Column(unique: false,nullable: true)
+  String bairro;
 
   ManagedSet<PalcoAtracao> palcoAtracao;
 

@@ -4,6 +4,7 @@ import 'package:aqueduct/aqueduct.dart';
 
 //importa os modelos
 import 'package:appjazz/model/atracao.dart';
+import '../model/palco_atracao.dart';
 
 //este controle lista as atrações do festival
 class AtracoesController extends ResourceController {
@@ -23,6 +24,9 @@ class AtracoesController extends ResourceController {
       @Bind.query('limit') int limit = -1,
       @Bind.query('search') String search = ""}) async {
     final query = Query<Atracao>(context);
+
+    //query.where((t) => t.id).equalTo(1);
+    query.join(set: (t) => t.palcoAtracao).join(object: (tp) => tp.palco);
 
     if (search != null && search != "") {
       query.predicate =

@@ -21,6 +21,7 @@ import '../data_table_component/data_table_component.dart';
 
 //rotas
 import '../../route_paths.dart';
+import '../../routes.dart';
 
 @Component(
   //isto vai ser o nome da tag do componente
@@ -36,6 +37,7 @@ import '../../route_paths.dart';
   ],
   pipes: [commonPipes, TruncatePipe],
   providers: [ClassProvider(AppService)],
+  exports: [RoutePaths, Routes],
 )
 class AtracaoListComponent implements OnInit {
   @ViewChild('dataTable')
@@ -60,7 +62,7 @@ class AtracaoListComponent implements OnInit {
   }*/
 
   String atracaoUrl(int id) =>
-      RoutePaths.atracao.toUrl(parameters: {'id': '$id'});
+      RoutePaths.atracaoEdit.toUrl(parameters: {'id': '$id'});
 
   Future<NavigationResult> gotoDetail() =>
       _router.navigate(atracaoUrl(selected.id));

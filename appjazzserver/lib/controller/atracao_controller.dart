@@ -30,7 +30,7 @@ class AtracaoController extends ResourceController {
 
     if (search != null && search != "") {
       query.predicate =
-          QueryPredicate("nome ilike @nome", {"nome": "%${search}%"});
+          QueryPredicate("t0.nome ilike @nome", {"nome": "%${search}%"});
     }
 
     final totalRecords = await query.reduce.count();
@@ -47,6 +47,7 @@ class AtracaoController extends ResourceController {
       final palcos = a.palcoAtracao.map((t) {
         final palco = t.palco.asMap();
         palco['data'] = t.data.toString();
+        palco['selected'] = true;
         return palco;
       }).toList();
       a.palcos = palcos;
@@ -74,6 +75,7 @@ class AtracaoController extends ResourceController {
     final palcos = a.palcoAtracao.map((t) {
       final palco = t.palco.asMap();
       palco['data'] = t.data.toString();
+      palco['selected'] = true;
       return palco;
     }).toList();
 

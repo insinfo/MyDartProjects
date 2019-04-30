@@ -1,5 +1,9 @@
 <md-toast #toastElement></md-toast>
 
+<div *ngIf="atracao == null">
+    <h6>Não foi possível acessar o backend.</h6>
+</div>
+
 <!-- Basic layout-->
 <div class="card" *ngIf="atracao != null">
     <div class="card-header header-elements-inline">
@@ -32,14 +36,24 @@
                 <label>Video:</label>
                 <input [(ngModel)]="atracao.video" type="text" class="form-control" placeholder="video url">
             </div>
-
-
-            <material-select [selection]="multiPalcoSelection"
+            <!--<material-select width="2" [selection]="multiPalcoSelection"
                              [options]="palcoOptions"
                              displayNameRenderer
-                             width="2"
-                             class=""></material-select>
+                             width="2" ></material-select>-->
 
+            <div *ngIf="palcos != null">
+                <div class="row" *ngFor="let palco of palcos">
+                    <div class="col-lg-2">
+                        <material-checkbox [label]="palco.nome" [(ngModel)]="palco.selected"></material-checkbox>
+                    </div>
+                    <div class="col-lg-2">
+                        <input [(ngModel)]="palco.data" placeholder="Data" type="date" class="form-control">
+                    </div>
+                    <div class="col-lg-2">
+                        <input [(ngModel)]="palco.hora" placeholder="Hora" type="time" class="form-control">
+                    </div>
+                </div>
+            </div>
 
             <div class="text-right">
                 <button class="btn bg-pink-400" (click)="goBack()">

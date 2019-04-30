@@ -13,16 +13,19 @@
 
                 <div class="header-elements d-none">
                     <div class="d-flex justify-content-center">
+
                         <a [routerLink]="RoutePaths.atracoes.toUrl()" [routerLinkActive]="'active'"
                            class="btn btn-link btn-float font-size-sm font-weight-semibold text-default legitRipple">
                             <i class="icon-calendar5 text-pink-300"></i>
                             <span>Atrações</span>
                         </a>
+
                         <a href="#"
                            class="btn btn-link btn-float font-size-sm font-weight-semibold text-default legitRipple">
                             <i class="icon-bars-alt text-pink-300"></i>
                             <span>Statistics</span>
                         </a>
+
                         <a
                                 class="btn btn-link btn-float font-size-sm font-weight-semibold text-default legitRipple">
                             <i class="icon-calculator text-pink-300"></i>
@@ -47,12 +50,8 @@
                 </div>
             </div>
             <router-outlet [routes]="Routes.all"></router-outlet>
-
         </div>
         <!-- /Content area -->
     </div>
-
 </div>
 <!-- /page content-->
-
-

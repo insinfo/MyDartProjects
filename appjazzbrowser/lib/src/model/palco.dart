@@ -1,6 +1,7 @@
 import 'dart:async';
 import 'dart:core';
 import 'atracao.dart';
+import 'package:intl/intl.dart';
 import 'package:angular/angular.dart';
 import 'package:angular_forms/angular_forms.dart';
 import 'package:angular_router/angular_router.dart';
@@ -18,7 +19,9 @@ class Palco implements ISerialization, HasUIDisplayName {
   String tipoLogradouro;
   String numero;
   String bairro;
-  DateTime data;
+  String data;
+  String hora;
+  bool selected = false;
   List<Atracao> atracoes;
 
   Palco(
@@ -31,7 +34,8 @@ class Palco implements ISerialization, HasUIDisplayName {
       this.tipoLogradouro,
       this.numero,
       this.bairro,
-      this.data});
+      this.data,
+      this.hora});
 
   Palco.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
@@ -43,14 +47,22 @@ class Palco implements ISerialization, HasUIDisplayName {
     this.tipoLogradouro = json['tipoLogradouro'];
     this.numero = json['numero'];
     this.bairro = json['bairro'];
-    this.data = json.containsKey('data') ? DateTime.tryParse(json['data'].toString()) : null;
+    this.selected = json.containsKey('selected') ? json['selected'] : false;
+    if (json.containsKey('data')) {
+      var formatD = new DateFormat('yyyy-MM-dd');
+      var formatH = new DateFormat('HH:mm');
+      var d = DateTime.tryParse(json['data'].toString());
+      if (d != null) {
+        this.data = formatD.format(d);
+        this.hora = formatH.format(d);
+      }
+    }
     if (json['atracoes'] != null) {
       atracoes = new List<Atracao>();
-      json['palcos'].forEach((v) {
+      json['atracoes'].forEach((v) {
         atracoes.add(new Atracao.fromJson(v));
       });
     }
-
   }
 
   Map<String, dynamic> toJson() {
@@ -64,7 +76,13 @@ class Palco implements ISerialization, HasUIDisplayName {
     data['tipoLogradouro'] = this.tipoLogradouro;
     data['numero'] = this.numero;
     data['bairro'] = this.bairro;
-    data['data'] = this.data;
+
+    if(this.data != null){
+      //DateTime d = DateFormat("dd/MM/yyyy").parse(this.data);
+     // DateTime h = DateFormat("HH:mm").parse(this.hora);
+      data['data'] = DateFormat("yyyy-MM-dd HH:mm").parse("${this.data} ${this.hora}").toString();
+    }
+
     if (this.atracoes != null) {
       data['atracoes'] = this.atracoes.map((v) => v.toJson()).toList();
     }
@@ -87,7 +105,8 @@ class Palco implements ISerialization, HasUIDisplayName {
     list.add({"key": "logradouro", "string": "url", "title": "Logradouro"});
     list.add({"key": "numero", "type": "string", "title": "Número"});
     list.add({"key": "bairro", "type": "string", "title": "Bairro"});
-    list.add({"key": "data", "type": "date", "title": "Data"});
+    list.add({"key": "data", "type": "string", "title": "Data"});
+    list.add({"key": "hora", "type": "string", "title": "Data"});
     return list;
   }
 

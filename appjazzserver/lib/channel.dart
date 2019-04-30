@@ -6,6 +6,7 @@ import 'package:appjazz/controller/comercio_parceiro_controller.dart';
 import 'package:appjazz/controller/dado_generico_controller.dart';
 import 'package:appjazz/controller/ja_passou_aqui_controller.dart';
 import 'package:appjazz/controller/usuario_controller.dart';
+import 'package:appjazz/controller/palco_controller.dart';
 
 //importa os modelos
 import 'package:appjazz/model/atracao.dart';
@@ -14,7 +15,8 @@ import 'package:appjazz/model/apoiador_festival.dart';
 import 'package:appjazz/model/comercio_parceiro.dart';
 import 'package:appjazz/model/dado_generico.dart';
 import 'package:appjazz/model/usuario.dart';
-
+import 'package:appjazz/model/palco_atracao.dart';
+import 'package:appjazz/model/palco.dart';
 import 'appjazz.dart';
 
 class AppjazzChannel extends ApplicationChannel {
@@ -33,11 +35,13 @@ class AppjazzChannel extends ApplicationChannel {
       ComercioParceiro,
       DadoGenerico,
       Usuario,
-      JaPassouAqui
+      JaPassouAqui,
+      Palco,
+      PalcoAtracao,
     ]);
 
     final persistentStore = PostgreSQLPersistentStore.fromConnectionInfo(
-        "postgres", "s1sadm1n", "localhost", 5432, "apps");
+        "postgres", "s1sadm1n", "localhost", 5433, "apps");
     context = ManagedContext(dataModel, persistentStore);
   }
 
@@ -52,30 +56,27 @@ class AppjazzChannel extends ApplicationChannel {
 
     //contexto para acesso ao banco de dados, injeção de dependência
 
-
     router
         .route("/apoiadores/[:id]")
         .link(() => ApoiadorFestivalController(context));
 
-    router
-        .route("/atracoes/[:id]")
-        .link(() => AtracoesController(context));
+    router.route("/atracoes/[:id]")
+        .link(() => AtracaoController(context));
+
+    router.route("/palcos/[:id]")
+        .link(() => PalcoController(context));
 
     router
         .route("/comercios/[:id]")
         .link(() => ComercioParceiroController(context));
 
-    router
-        .route("/dados/[:id]")
-        .link(() => DadoGenericoController(context));
+    router.route("/dados/[:id]").link(() => DadoGenericoController(context));
 
     router
         .route("/passaramaqui/[:id]")
         .link(() => JaPassouAquiController(context));
 
-    router
-        .route("/usuarios/[:id]")
-        .link(() => UsuarioController(context));
+    router.route("/usuarios/[:id]").link(() => UsuarioController(context));
 
 /*
 

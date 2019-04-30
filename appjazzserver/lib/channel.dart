@@ -6,6 +6,7 @@ import 'package:appjazz/controller/comercio_parceiro_controller.dart';
 import 'package:appjazz/controller/dado_generico_controller.dart';
 import 'package:appjazz/controller/ja_passou_aqui_controller.dart';
 import 'package:appjazz/controller/usuario_controller.dart';
+import 'package:appjazz/controller/palco_controller.dart';
 
 //importa os modelos
 import 'package:appjazz/model/atracao.dart';
@@ -59,7 +60,11 @@ class AppjazzChannel extends ApplicationChannel {
         .route("/apoiadores/[:id]")
         .link(() => ApoiadorFestivalController(context));
 
-    router.route("/atracoes/[:id]").link(() => AtracoesController(context));
+    router.route("/atracoes/[:id]")
+        .link(() => AtracaoController(context));
+
+    router.route("/palcos/[:id]")
+        .link(() => PalcoController(context));
 
     router
         .route("/comercios/[:id]")

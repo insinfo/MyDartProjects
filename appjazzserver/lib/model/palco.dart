@@ -5,6 +5,28 @@ import 'atracao.dart';
 import 'palco_atracao.dart';
 
 class Palco extends ManagedObject<_Palco> implements _Palco {
+
+  Palco();
+
+  Palco.fromJson(Map<String, dynamic> json) {
+    id = json['id'] as int;
+    nome = json['nome'] as String;
+    descricao = json['descricao'] as String;
+    imagem = json['imagem'] as String;
+    video = json['video'] as String;
+    logradouro = json['logradouro'] as String;
+    tipoLogradouro = json['tipoLogradouro'] as String;
+    numero = json['numero'] as String;
+    bairro = json['bairro'] as String;
+  }
+
+  @Serialize(input: true, output: true)
+  List<Map<String, dynamic>> atracoes;
+
+  @Serialize(input: true, output: false)
+  DateTime data;
+
+
 }
 
 //palcos

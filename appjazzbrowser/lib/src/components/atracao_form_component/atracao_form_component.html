@@ -1,4 +1,3 @@
-
 <md-toast #toastElement></md-toast>
 
 <!-- Basic layout-->
@@ -19,15 +18,28 @@
             </div>
 
             <div class="form-group">
-                <label>Ano:</label>
-                <input [(ngModel)]="atracao.ano" type="text" class="form-control" placeholder="ano">
-            </div>
-
-            <div class="form-group">
                 <label>Descrição:</label>
                 <textarea [(ngModel)]="atracao.descricao" rows="5" cols="5" class="form-control"
                           placeholder="entre com uma breve descrição"></textarea>
             </div>
+
+            <div class="form-group">
+                <label>Media:</label>
+                <input [(ngModel)]="atracao.media" type="text" class="form-control" placeholder="media social url">
+            </div>
+
+            <div class="form-group">
+                <label>Video:</label>
+                <input [(ngModel)]="atracao.video" type="text" class="form-control" placeholder="video url">
+            </div>
+
+
+            <material-select [selection]="multiPalcoSelection"
+                             [options]="palcoOptions"
+                             displayNameRenderer
+                             width="2"
+                             class=""></material-select>
+
 
             <div class="text-right">
                 <button class="btn bg-pink-400" (click)="goBack()">

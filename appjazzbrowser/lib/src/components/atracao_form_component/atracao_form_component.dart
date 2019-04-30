@@ -6,6 +6,7 @@ import 'package:angular_components/angular_components.dart';
 
 //models
 import '../../model/atracao.dart';
+import '../../model/palco.dart';
 
 //serviços
 import '../../services/app_service.dart';
@@ -19,6 +20,7 @@ import '../data_table_component/response_list.dart';
 //components
 import '../md_toast_component/md_toast_component.dart';
 import '../../../app_component.dart';
+
 //
 import '../../route_paths.dart';
 
@@ -32,17 +34,31 @@ import '../../route_paths.dart';
     coreDirectives,
     routerDirectives,
     MdToast,
-    MaterialButtonComponent
+    MaterialButtonComponent,
+    MaterialSelectComponent,
+    MaterialSelectItemComponent,
+    displayNameRendererDirective,
   ],
   pipes: [commonPipes, TruncatePipe],
   providers: [ClassProvider(AppService)],
+  styleUrls: const ['atracao_form_component.css'], //scss
 )
 class AtracaoFormComponent implements OnActivate {
   @ViewChild('toastElement')
   MdToast toastElement;
 
-  /*@ViewChild("alert")
-  DivElement element;*/
+  final SelectionModel<String> sinlePalcoSelection =
+      new SelectionModel.single();
+
+  final SelectionModel<Palco> multiPalcoSelection = new SelectionModel.multi();
+
+  String proto;
+  static var palcoList = [Palco(nome: "Costazul"), Palco(nome: "Lagoa")];
+
+  List<Palco> get palcos => palcoList;
+
+  final SelectionOptions<Palco> palcoOptions =
+      new SelectionOptions.fromList(palcoList);
 
   /* @Input()*/
   Atracao atracao;
@@ -68,7 +84,7 @@ class AtracaoFormComponent implements OnActivate {
   Future<void> save() async {
     //await _appService.update(atracao);
     this.toastElement.showToast("Salvo com sucesso.", type: ToastType.success);
-   // AppComponent.showAlert("Salvo com sucesso.");
+    // AppComponent.showAlert("Salvo com sucesso.");
     //Future.delayed(const Duration(seconds: 2),()=>{goBack();});
     await Future.delayed(const Duration(milliseconds: 2500)); //recommend
     goBack();

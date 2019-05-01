@@ -8,26 +8,27 @@
 </ul>-->
 
 <!-- Basic datatable -->
+
 <div class="card">
 
     <div class="card-header header-elements-inline">
         <h5 class="card-title">Lista de Atrações</h5>
         <div class="header-elements">
             <div class="list-icons">
-
+                <button [routerLink]="RoutePaths.atracaoNew.toUrl()" type="button" class="btn btn-primary legitRipple">Add</button>
             </div>
         </div>
     </div>
-
-    <div class="card-body">
-    </div>
-
+    <hr style="margin:0;padding:0;">
     <data-table #dataTable [data]="atracoes"
                 (rowClick)="onRowClick($event)"
                 (dataRequest)="onRequestData($event)">
     </data-table>
 
 </div>
+
+
+
 <!-- /Basic datatable [hidden]="!edited"
 
 <div *ngIf="selected != null">

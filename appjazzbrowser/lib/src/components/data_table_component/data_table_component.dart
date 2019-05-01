@@ -119,7 +119,7 @@ class DataTableComponent implements OnInit, AfterChanges, AfterViewInit {
   void draw() {
     //clear tbody if not get data
     if (_data == null || _data.isEmpty) {
-      tableElement.querySelector('tbody').innerHtml = "";
+      tableElement.querySelector('tbody').innerHtml = "<tr><td>Dados indisponiveis</td></tr>";
     }
     if (_data != null) {
       if (_data.isNotEmpty) {

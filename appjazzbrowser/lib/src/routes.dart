@@ -17,13 +17,18 @@ class Routes {
     component: atracao_list_template.AtracaoListComponentNgFactory,
   );
 
- static final atracao = RouteDefinition(
-   routePath: RoutePaths.atracao,
+ static final atracaoEdit = RouteDefinition(
+   routePath: RoutePaths.atracaoEdit,
+   component: atracao_form_template.AtracaoFormComponentNgFactory,
+ );
+
+ static final atracaoNew = RouteDefinition(
+   routePath: RoutePaths.atracaoNew,
    component: atracao_form_template.AtracaoFormComponentNgFactory,
  );
 
   static final all = <RouteDefinition>[
-    atracoes,atracao,
+    atracoes,atracaoEdit,atracaoNew
     /*RouteDefinition.redirect(
       path: '',
       redirectTo: RoutePaths.dashboard.toUrl(),

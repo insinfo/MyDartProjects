@@ -46,7 +46,7 @@ class Atracao implements ISerialization{
     json['video'] = this.video;
     json['media'] = this.media;
     if (this.palcos != null) {
-      json['palcos'] = this.palcos.map((v) => v.toJson()).toList();
+      json['palcos'] = this.palcos.map((p) => p.toJson()).toList();
     }
     return json;
   }

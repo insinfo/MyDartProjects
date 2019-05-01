@@ -30,7 +30,7 @@ class PalcoController extends ResourceController {
 
     if (search != null && search != "") {
       query.predicate =
-          QueryPredicate("nome ilike @nome", {"nome": "%${search}%"});
+          QueryPredicate("t0.nome ilike @nome", {"nome": "%${search}%"});
     }
 
     final totalRecords = await query.reduce.count();

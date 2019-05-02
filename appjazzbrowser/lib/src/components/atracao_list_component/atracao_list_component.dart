@@ -18,6 +18,7 @@ import '../data_table_component/data_table_filter.dart';
 //components
 import '../atracao_form_component/atracao_form_component.dart';
 import '../data_table_component/data_table_component.dart';
+import '../md_toast_component/md_toast_component.dart';
 
 //rotas
 import '../../route_paths.dart';
@@ -31,6 +32,7 @@ import '../../routes.dart';
   directives: [
     formDirectives,
     coreDirectives,
+    MdToast,
     routerDirectives,
     AtracaoFormComponent,
     DataTableComponent
@@ -42,6 +44,9 @@ import '../../routes.dart';
 class AtracaoListComponent implements OnInit {
   @ViewChild('dataTable')
   DataTableComponent dataTable;
+
+  @ViewChild('toastElement')
+  MdToast toastElement;
 
   RList<Atracao> atracoes;
   Atracao selected;
@@ -75,6 +80,18 @@ class AtracaoListComponent implements OnInit {
 
   Future<void> onRequestData(DataTableFilter dataTableFilter) async {
     await _getAllAtracoes(filters: dataTableFilter);
+  }
+
+  Future<void> onDelete() async {
+    if (dataTable.selectedItems != null && dataTable.selectedItems.isNotEmpty) {
+      RList<Atracao> list = new RList<Atracao>();
+      for (Atracao a in dataTable.selectedItems) {
+        list.add(a);
+      }
+      var message = await _appService.deleteAllAtracao(list);
+      this.toastElement.showToast(message, type: ToastType.success);
+      await _getAllAtracoes(filters: new DataTableFilter());
+    }
   }
 
   void ngOnInit() => _getAllAtracoes(filters: new DataTableFilter());

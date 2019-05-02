@@ -19,7 +19,7 @@ class Palco implements ISerialization, HasUIDisplayName {
   String tipoLogradouro;
   String numero;
   String bairro;
-  String data;
+  DateTime _data;
   String hora;
   bool selected = false;
   List<Atracao> atracoes;
@@ -33,9 +33,40 @@ class Palco implements ISerialization, HasUIDisplayName {
       this.logradouro,
       this.tipoLogradouro,
       this.numero,
-      this.bairro,
-      this.data,
-      this.hora});
+      this.bairro});
+
+  String get data {
+    return _data != null ? _data.toIso8601String().substring(0, 10) : _data;
+  }
+
+  set data(value) {
+    if (value is DateTime) {
+      _data = value;
+    } else if (value is String) {
+      _data = DateTime.tryParse(value);
+    }
+  }
+
+  /*String get hora {
+    var formatH = new DateFormat('HH:mm');
+    return _hora != null ? formatH.format(_hora) : _hora;
+  }
+
+  set hora(value) {
+    print(value);
+    if (value is DateTime) {
+      _hora = value;
+    } else if (value is String && value != null) {
+      RegExp regExp = new RegExp(
+        r"^(0[0-9]|1[0-9]|2[0-3]|[0-9]):[0-5][0-9]$",
+        caseSensitive: false,
+        multiLine: false,
+      );
+      var formatH = new DateFormat('HH:mm');
+      _hora = regExp.hasMatch(value) ? formatH.parse(value) : null;
+    }
+    print(_hora);
+  }*/
 
   Palco.fromJson(Map<String, dynamic> json) {
     this.id = json['id'];
@@ -48,7 +79,8 @@ class Palco implements ISerialization, HasUIDisplayName {
     this.numero = json['numero'];
     this.bairro = json['bairro'];
     this.selected = json.containsKey('selected') ? json['selected'] : false;
-    if (json.containsKey('data')) {
+
+    /*if (json.containsKey('data')) {
       var formatD = new DateFormat('yyyy-MM-dd');
       var formatH = new DateFormat('HH:mm');
       var d = DateTime.tryParse(json['data'].toString());
@@ -56,7 +88,16 @@ class Palco implements ISerialization, HasUIDisplayName {
         this.data = formatD.format(d);
         this.hora = formatH.format(d);
       }
+    }*/
+
+    if(json.containsKey('data')) {
+      data = json['data'].toString();
     }
+
+    if(json.containsKey('hora')) {
+      hora = json['hora'].toString();
+    }
+
     if (json['atracoes'] != null) {
       atracoes = new List<Atracao>();
       json['atracoes'].forEach((v) {
@@ -67,7 +108,9 @@ class Palco implements ISerialization, HasUIDisplayName {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    if(this.id != null) {
+      data['id'] = this.id;
+    }
     data['nome'] = this.nome;
     data['descricao'] = this.descricao;
     data['imagem'] = this.imagem;
@@ -78,9 +121,14 @@ class Palco implements ISerialization, HasUIDisplayName {
     data['bairro'] = this.bairro;
 
     if(this.data != null){
+      data['data'] = this.data;
       //DateTime d = DateFormat("dd/MM/yyyy").parse(this.data);
      // DateTime h = DateFormat("HH:mm").parse(this.hora);
-      data['data'] = DateFormat("yyyy-MM-dd HH:mm").parse("${this.data} ${this.hora}").toString();
+      //data['data'] = DateFormat("yyyy-MM-dd HH:mm").parse("${this.data} ${this.hora}").toString();
+    }
+
+    if(this.hora != null){
+      data['hora'] = this.hora;
     }
 
     if (this.atracoes != null) {

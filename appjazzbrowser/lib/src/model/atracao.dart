@@ -39,7 +39,9 @@ class Atracao implements ISerialization{
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = new Map<String, dynamic>();
-    json['id'] = this.id;
+    if(this.id != null) {
+      json['id'] = this.id;
+    }
     json['nome'] = this.nome;
     json['descricao'] = this.descricao;
     json['imagem'] = this.imagem;

@@ -3,6 +3,7 @@ import 'dart:convert';
 import 'dart:html';
 
 import 'package:http/browser_client.dart';
+
 import 'package:angular/core.dart';
 
 //models
@@ -87,12 +88,18 @@ class AppService {
 
   Future<String> updateAtracao(Atracao atracao) async {
     try {
+
       var apiPath = "/atracoes/${atracao.id}";
+
       Map<String, String> stringParams = {};
+
       Uri url = new Uri.http(apiDomain, apiPath);
+      var amap = atracao.toJson();
+
+      print(jsonEncode(amap));
 
       var resp = await client.put(url,
-          body: jsonEncode(atracao.toJson()),
+          body: jsonEncode(amap),
           encoding: Utf8Codec(),
           headers: headers);
 
@@ -103,6 +110,56 @@ class AppService {
       return "Falha: ${resp.body}";
     } catch (e) {
       print("updateAtracao: " + e.toString());
+      return "Falha: " + e.toString();
+    }
+  }
+
+  Future<String> createAtracao(Atracao atracao) async {
+    try {
+      var apiPath = "/atracoes";
+      Map<String, String> stringParams = {};
+      Uri url = new Uri.http(apiDomain, apiPath);
+
+      var resp = await client.post(url,
+          body: jsonEncode(atracao.toJson()),
+          encoding: Utf8Codec(),
+          headers: headers);
+
+      if (resp.statusCode == 200) {
+        return "Salvo com sucesso.";
+      }
+
+      return "Falha: ${resp.body}";
+    } catch (e) {
+      print("createAtracao: " + e.toString());
+      return "Falha: " + e.toString();
+    }
+  }
+
+  Future<String> deleteAllAtracao(RList<Atracao> atracao) async {
+    try {
+      var apiPath = "/atracoes";
+      Map<String, String> stringParams = {};
+      Uri url = new Uri.http(apiDomain, apiPath);
+
+      List<Map<String,dynamic>> dataToSend = atracao.map((t) => t.toJson()).toList();
+
+      HttpRequest request = new HttpRequest();
+      request
+      ..open("delete", url.toString())
+      ..setRequestHeader('Content-Type','application/json')
+      ..send(json.encode(dataToSend));
+
+      await request.onLoadEnd.first;
+      //await request.onReadyStateChange.first;
+      if (request.status == 200) {
+        return "Sucesso.";
+      }
+
+      return "Falha: ${request.responseText}";
+
+    } catch (e) {
+      print("deleteAllAtracao: " + e.toString());
       return "Falha: " + e.toString();
     }
   }

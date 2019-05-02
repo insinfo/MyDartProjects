@@ -1,3 +1,4 @@
+<md-toast #toastElement></md-toast>
 <!--
 <ul class="attraction">
     <li *ngFor="let atracao of atracoes"
@@ -15,7 +16,8 @@
         <h5 class="card-title">Lista de Atrações</h5>
         <div class="header-elements">
             <div class="list-icons">
-                <button [routerLink]="RoutePaths.atracaoNew.toUrl()" type="button" class="btn btn-primary legitRipple">Add</button>
+                <button [routerLink]="RoutePaths.atracaoNew.toUrl()"  type="button" class="btn btn-primary legitRipple">Adicionar</button>
+                <button (click)="onDelete()" type="button" class="btn bg-pink-400 legitRipple">Deletar</button>
             </div>
         </div>
     </div>

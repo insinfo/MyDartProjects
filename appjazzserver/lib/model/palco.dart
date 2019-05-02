@@ -5,7 +5,6 @@ import 'atracao.dart';
 import 'palco_atracao.dart';
 
 class Palco extends ManagedObject<_Palco> implements _Palco {
-
   Palco();
 
   Palco.fromJson(Map<String, dynamic> json) {
@@ -20,46 +19,63 @@ class Palco extends ManagedObject<_Palco> implements _Palco {
     bairro = json['bairro'] as String;
   }
 
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> data = {};
+    if (id != null) {
+      data['id'] = id;
+    }
+    data['nome'] = nome;
+    data['descricao'] = descricao;
+    data['imagem'] = imagem;
+    data['video'] = video;
+    data['logradouro'] = logradouro;
+    data['tipoLogradouro'] = tipoLogradouro;
+    data['numero'] = numero;
+    data['bairro'] = bairro;
+    data['data'] = data.toString();
+    return data;
+  }
+
   @Serialize(input: true, output: true)
   List<Map<String, dynamic>> atracoes;
 
   @Serialize(input: true, output: false)
   DateTime data;
-
-
 }
 
 //palcos
 @Table(name: "palcos")
 class _Palco {
-
-  @Column(primaryKey: true,unique: true,autoincrement:true, databaseType: ManagedPropertyType.bigInteger)
+  @Column(
+      primaryKey: true,
+      unique: true,
+      autoincrement: true,
+      databaseType: ManagedPropertyType.bigInteger)
   int id;
 
-  @Column(unique: false,nullable: true)
+  @Column(unique: false, nullable: true)
   String nome;
 
-  @Column(unique: false,nullable: true)
+  @Column(unique: false, nullable: true)
   String descricao;
 
-  @Column(unique: false,nullable: true)
+  @Column(unique: false, nullable: true)
   String imagem;
 
-  @Column(unique: false,nullable: true)
+  @Column(unique: false, nullable: true)
   String video;
 
-  @Column(unique: false,nullable: true)
+  @Column(unique: false, nullable: true)
   String logradouro;
 
-  @Column(unique: false,nullable: true)
+  @Column(unique: false, nullable: true)
   String tipoLogradouro;
 
-  @Column(unique: false,nullable: true)
+  @Column(unique: false, nullable: true)
   String numero;
 
-  @Column(unique: false,nullable: true)
+  @Column(unique: false, nullable: true)
   String bairro;
 
   ManagedSet<PalcoAtracao> palcoAtracao;
-
 }

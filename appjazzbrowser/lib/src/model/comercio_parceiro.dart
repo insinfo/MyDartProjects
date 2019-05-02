@@ -33,7 +33,9 @@ class ComercioParceiro implements ISerialization{
       this.descricao});
 
   ComercioParceiro.fromJson(Map<String, dynamic> json) {
-    this.id = json['id'];
+    if(this.id != null) {
+      json['id'] = this.id;
+    }
     this.nome = json['nome'];
     this.logradouro = json['logradouro'];
     this.tipoLogradouro = json['tipoLogradouro'];

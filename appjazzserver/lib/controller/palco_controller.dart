@@ -18,7 +18,7 @@ class PalcoController extends ResourceController {
     "totalRecords": "Bearer "
   };*/
 
-  //obtem todos
+  //obtem todos palcos
   @Operation.get()
   Future<Response> getAll(
       {@Bind.query('offset') int offset = -1,
@@ -42,17 +42,26 @@ class PalcoController extends ResourceController {
     }
 
     final items = await query.fetch();
-
-    for (Palco p in items) {
-      final atracoes = p.palcoAtracao.map((t) {
-        final atracao = t.atracao.asMap();
-        atracao['data'] = t.data.toString();
-        return atracao;
-      }).toList();
-      p.atracoes = atracoes;
-      p.backing.removeProperty("palcoAtracao");
+    //retorna atrações
+    if (items != null) {
+      for (Palco p in items) {
+        if (p != null) {
+          if (p.palcoAtracao != null) {
+            final atracoes = p.palcoAtracao.map((t) {
+              if (t.atracao != null) {
+                final atracao = t.atracao.asMap();
+                atracao['data'] = t.data.toString();
+                atracao['hora'] = t.hora.toString();
+                return atracao;
+              }
+              return <String, dynamic>{};
+            }).toList();
+            p.atracoes = atracoes;
+            p.backing.removeProperty("palcoAtracao");
+          }
+        }
+      }
     }
-
     //await Future.delayed(Duration(seconds: 20));
 
     return Response.ok(items, headers: {
@@ -61,7 +70,7 @@ class PalcoController extends ResourceController {
     });
   }
 
-  //obtem uma atração por id
+  //obtem uma palco por id
   @Operation.get('id')
   Future<Response> getById(@Bind.path('id') int id) async {
     final query = Query<Palco>(context)
@@ -71,14 +80,21 @@ class PalcoController extends ResourceController {
 
     final p = await query.fetchOne();
 
-    final atracoes = p.palcoAtracao.map((t) {
-      final atracao = t.atracao.asMap();
-      atracao['data'] = t.data.toString();
-      return atracao;
-    }).toList();
-    p.atracoes = atracoes;
-    p.backing.removeProperty("palcoAtracao");
-
+    if (p != null) {
+      if (p.palcoAtracao != null) {
+        final atracoes = p.palcoAtracao.map((t) {
+          if (t.atracao != null) {
+            final atracao = t.atracao.asMap();
+            atracao['data'] = t.data.toString();
+            atracao['hora'] = t.hora.toString();
+            return atracao;
+          }
+          return <String, dynamic>{};
+        }).toList();
+        p.atracoes = atracoes;
+        p.backing.removeProperty("palcoAtracao");
+      }
+    }
 
     if (p == null) {
       return Response.notFound();
@@ -86,28 +102,44 @@ class PalcoController extends ResourceController {
     return Response.ok(p);
   }
 
-  //cria uma atração
+  //cria um paco
   @Operation.post()
   Future<Response> create(@Bind.body() Palco input) async {
-    final query = Query<Palco>(context)..values = input;
-    final inserted= await query.insert();
+    final query = Query<Palco>(context)
+      ..values.nome = input.nome
+      ..values.descricao = input.descricao
+      ..values.imagem = input.imagem
+      ..values.video = input.video
+      ..values.logradouro = input.logradouro
+      ..values.tipoLogradouro = input.tipoLogradouro
+      ..values.numero = input.numero
+      ..values.bairro = input.bairro;
 
-    //insere
-    if (input.atracoes != null) {
-      for (var json in input.atracoes) {
-        final qPalcoAtracao = Query<PalcoAtracao>(context)
-          ..values.palco = inserted
-          ..values.atracao = Atracao.fromJson(json)
-          ..values.data = DateTime.tryParse(json['data'].toString());
+    final inserted = await query.insert();
 
-        final palcoAtracao = await qPalcoAtracao.insert();
+    //insere palcoAtracao
+    if (inserted != null) {
+      if (input.atracoes != null) {
+        final lista = input.atracoes;
+        for (var json in lista) {
+          final atracao = Atracao.fromJson(json);
+          if (atracao.id != null) {
+            final qPalcoAtracao = Query<PalcoAtracao>(context);
+            qPalcoAtracao.values.palco = inserted;
+            qPalcoAtracao.values.atracao = atracao;
+            qPalcoAtracao.values.data =
+                DateTime.tryParse(json['data'].toString());
+            qPalcoAtracao.values.hora =json['hora'].toString();
+            final palcoAtracao = await qPalcoAtracao.insert();
+          }
+        }
       }
     }
 
     return Response.ok(inserted);
   }
 
-  //atualiza atração
+  //atualiza um palco
   @Operation.put('id')
   Future<Response> updateById(
       @Bind.path('id') int id, @Bind.body() Palco input) async {
@@ -118,19 +150,24 @@ class PalcoController extends ResourceController {
     final updated = await query.updateOne();
 
     //vinculação
-    if (input.atracoes != null) {
-      //deleta todas as vinculações deste palcos as atração
-      final paQuery = Query<PalcoAtracao>(context);
-      paQuery.where((pa) => pa.palco.id).equalTo(updated.id);
-      final paDeletado = await paQuery.delete();
+    if (updated != null) {
+      if (input.atracoes != null) {
+        //deleta todas as vinculações deste palcos as atração
+        final paQuery = Query<PalcoAtracao>(context);
+        paQuery.where((pa) => pa.palco.id).equalTo(updated.id);
+        final paDeletado = await paQuery.delete();
 
-      for (var json in input.atracoes) {
-        final newAtracao = Atracao.fromJson(json);
-        paQuery
-          ..values.palco = updated
-          ..values.atracao = newAtracao
-          ..values.data = DateTime.tryParse(json['data'].toString());
-        final palcoAtracao = await paQuery.insert();
+        for (var json in input.atracoes) {
+          final newAtracao = Atracao.fromJson(json);
+          if (newAtracao.id != null) {
+            paQuery
+              ..values.palco = updated
+              ..values.atracao = newAtracao
+              ..values.data = DateTime.tryParse(json['data'].toString())
+              ..values.hora = json['hora'].toString();
+            final palcoAtracao = await paQuery.insert();
+          }
+        }
       }
     }
 

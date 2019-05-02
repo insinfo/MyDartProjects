@@ -5,7 +5,6 @@ import 'palco.dart';
 import 'palco_atracao.dart';
 
 class Atracao extends ManagedObject<_Atracao> implements _Atracao {
-
   Atracao();
 
   Atracao.fromJson(Map<String, dynamic> json) {
@@ -17,18 +16,26 @@ class Atracao extends ManagedObject<_Atracao> implements _Atracao {
     media = json['media'] as String;
   }
 
+  Map<String, dynamic> toJson() {
+    final Map<String, dynamic> json = {};
+    if (id != null) {
+      json['id'] = id;
+    }
+    json['nome'] = nome;
+    json['descricao'] = descricao;
+    json['imagem'] = imagem;
+    json['video'] = video;
+    json['media'] = media;
+    return json;
+  }
+
   @Serialize(input: true, output: true)
   List<Map<String, dynamic>> palcos;
-
-
 }
 
 //atrações
 @Table(name: "atracoes")
 class _Atracao {
-
-
-
   @Column(
       primaryKey: true,
       unique: true,
@@ -52,4 +59,6 @@ class _Atracao {
   String media;
 
   ManagedSet<PalcoAtracao> palcoAtracao;
+
+
 }

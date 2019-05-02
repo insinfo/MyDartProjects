@@ -22,7 +22,9 @@ class PalcoAtracao {
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['id'] = this.id;
+    if(this.id != null) {
+      data['id'] = this.id;
+    }
     if (this.atracao != null) {
       data['atracao'] = this.atracao.toJson();
     }

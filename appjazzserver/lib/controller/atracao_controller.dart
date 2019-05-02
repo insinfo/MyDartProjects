@@ -42,16 +42,26 @@ class AtracaoController extends ResourceController {
     }
 
     final attractions = await query.fetch();
-
-    for (Atracao a in attractions) {
-      final palcos = a.palcoAtracao.map((t) {
-        final palco = t.palco.asMap();
-        palco['data'] = t.data.toString();
-        palco['selected'] = true;
-        return palco;
-      }).toList();
-      a.palcos = palcos;
-      a.backing.removeProperty("palcoAtracao");
+    //retorna palcos
+    if (attractions != null) {
+      for (Atracao a in attractions) {
+        if (a != null) {
+          if (a.palcoAtracao != null) {
+            final palcos = a.palcoAtracao.map((t) {
+              if (t.palco != null) {
+                final palco = t.palco.asMap();
+                palco['data'] = t.data.toString();
+                palco['hora'] = t.hora.toString();
+                palco['selected'] = true;
+                return palco;
+              }
+              return <String, dynamic>{};
+            }).toList();
+            a.palcos = palcos;
+            a.backing.removeProperty("palcoAtracao");
+          }
+        }
+      }
     }
 
     //await Future.delayed(Duration(seconds: 20));
@@ -72,15 +82,23 @@ class AtracaoController extends ResourceController {
 
     final a = await query.fetchOne();
 
-    final palcos = a.palcoAtracao.map((t) {
-      final palco = t.palco.asMap();
-      palco['data'] = t.data.toString();
-      palco['selected'] = true;
-      return palco;
-    }).toList();
+    if (a != null) {
+      if (a.palcoAtracao != null) {
+        final palcos = a.palcoAtracao.map((t) {
+          if (t.palco != null) {
+            final palco = t.palco.asMap();
+            palco['data'] = t.data.toString();
+            palco['hora'] = t.hora.toString();
+            palco['selected'] = true;
+            return palco;
+          }
+          return <String, dynamic>{};
+        }).toList();
 
-    a.palcos = palcos;
-    a.backing.removeProperty("palcoAtracao");
+        a.palcos = palcos;
+        a.backing.removeProperty("palcoAtracao");
+      }
+    }
 
     if (a == null) {
       return Response.notFound();
@@ -91,18 +109,32 @@ class AtracaoController extends ResourceController {
   //cria uma atração
   @Operation.post()
   Future<Response> create(@Bind.body() Atracao inAtracao) async {
-    final qAtracao = Query<Atracao>(context)..values = inAtracao;
+    final qAtracao = Query<Atracao>(context)
+      ..values.nome = inAtracao.nome
+      ..values.descricao = inAtracao.descricao
+      ..values.imagem = inAtracao.imagem
+      ..values.video = inAtracao.video
+      ..values.media = inAtracao.media;
+
+    //qAtracao.valueMap = inAtracao.toJson();
+
     final insertedAtracao = await qAtracao.insert();
 
-    //insere
-    if (inAtracao.palcos != null) {
-      for (var json in inAtracao.palcos) {
-        final qPalcoAtracao = Query<PalcoAtracao>(context)
-          ..values.palco = Palco.fromJson(json)
-          ..values.atracao = insertedAtracao
-          ..values.data = DateTime.tryParse(json['data'].toString());
-
-        final palcoAtracao = await qPalcoAtracao.insert();
+    //insere palcoAtracao
+    if (insertedAtracao != null) {
+      if (inAtracao.palcos != null) {
+        for (var json in inAtracao.palcos) {
+          final palco = Palco.fromJson(json);
+          if (palco.id != null) {
+            final qPalcoAtracao = Query<PalcoAtracao>(context);
+            qPalcoAtracao.values.palco = palco;
+            qPalcoAtracao.values.atracao = insertedAtracao;
+            qPalcoAtracao.values.data =
+                DateTime.tryParse(json['data'].toString());
+            qPalcoAtracao.values.hora =json['hora'].toString();
+            final palcoAtracao = await qPalcoAtracao.insert();
+          }
+        }
       }
     }
 
@@ -128,10 +160,10 @@ class AtracaoController extends ResourceController {
 
       for (var json in inAtracao.palcos) {
         final newPalco = Palco.fromJson(json);
-        paQuery
-          ..values.palco = newPalco
-          ..values.atracao = updatedAtracao
-          ..values.data = DateTime.tryParse(json['data'].toString());
+        paQuery.values.palco = newPalco;
+        paQuery.values.atracao = updatedAtracao;
+        paQuery.values.data = DateTime.tryParse(json['data'].toString());
+        paQuery.values.hora = json['hora'].toString();
         final palcoAtracao = await paQuery.insert();
       }
     }
@@ -143,17 +175,46 @@ class AtracaoController extends ResourceController {
     return Response.ok(updatedAtracao);
   }
 
-//deleta atração
-/*@Operation.delete('id')
+  //deleta array de atração
+  @Operation.delete()
+  Future<Response> deleteAll(@Bind.body() List<Atracao> inputList ) async {
+
+    int count = 0;
+    if(inputList != null){
+      for(Atracao at in inputList){
+        final query = Query<Atracao>(context);
+        query.where((a) => a.id).equalTo(at.id);
+        final r = await query.delete();
+        //deleta vinculação com palco
+        if(r != null){
+          final paQuery = Query<PalcoAtracao>(context);
+          paQuery.where((pa) => pa.atracao.id).equalTo(at.id);
+          await paQuery.delete();
+          count++;
+        }
+      }
+    }
+    return Response.ok({"message":"Sucesso ${count} deletados"});
+  }
+
+  //deleta uma atração
+  @Operation.delete('id')
   Future<Response> deleteById(@Bind.path('id') int id) async {
     final query = Query<Atracao>(context)
       ..where((attraction) => attraction.id).equalTo(id);
 
-    final attraction = await query.delete();
-    if (attraction == null) {
+    final r = await query.delete();
+
+    //deleta vinculação com palco
+    if(r != null){
+      final paQuery = Query<PalcoAtracao>(context);
+      paQuery.where((pa) => pa.atracao.id).equalTo(id);
+      await paQuery.delete();
+    }
+
+    if (r == null) {
       return Response.notFound();
     }
-    return Response.ok(attraction);
-  }*/
-
+    return Response.ok(r);
+  }
 }

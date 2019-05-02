@@ -11,7 +11,11 @@ class PalcoAtracao extends ManagedObject<_PalcoAtracao>
 //palcoAtracao
 @Table(name: "palcoAtracao")
 class _PalcoAtracao {
-  @primaryKey
+  @Column(
+      primaryKey: true,
+      unique: true,
+      autoincrement: true,
+      databaseType: ManagedPropertyType.bigInteger)
   int id;
 
   @Relate(#palcoAtracao, isRequired: false, onDelete: DeleteRule.nullify)
@@ -22,5 +26,8 @@ class _PalcoAtracao {
 
   @Column(unique: false, nullable: true)
   DateTime data;
+
+  @Column(unique: false, nullable: true)
+  String hora;
 
 }

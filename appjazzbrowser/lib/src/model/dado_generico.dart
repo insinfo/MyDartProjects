@@ -20,7 +20,9 @@ class DadoGenerico implements ISerialization{
 
   Map<String, dynamic> toJson() {
     final Map<String, dynamic> json = new Map<String, dynamic>();
-    json['id'] = this.id;
+    if(this.id != null) {
+      json['id'] = this.id;
+    }
     json['historia'] = this.historia;
     json['palcos'] = this.palcos;
     json['edicoes'] = this.edicoes;

@@ -117,75 +117,82 @@ class DataTableComponent implements OnInit, AfterChanges, AfterViewInit {
   }
 
   void draw() {
-    //clear tbody if not get data
-    if (_data == null || _data.isEmpty) {
-      tableElement.querySelector('tbody').innerHtml = "<tr><td>Dados indisponiveis</td></tr>";
-    }
-    if (_data != null) {
-      if (_data.isNotEmpty) {
-        tableElement.innerHtml = "";
-
-        List<Map<String, dynamic>> columns = _data[0].toDisplayNames();
-
-        Element tableHead = tableElement.createTHead();
-        TableRowElement tableHeaderRow = tableElement.tHead.insertRow(-1);
-        //show checkbox on tableHead to select all rows
-        if (_showCheckBoxToSelectRow) {
-          var th = new Element.tag('th');
-          var label = new Element.tag('label');
-          label.classes.add("pure-material-checkbox");
-          var input = new CheckboxInputElement();
-          //input.type = "checkbox";
-          input.onClick.listen(onSelectAll);
-          var span = new Element.tag('span');
-          label.append(input);
-          label.append(span);
-          th.append(label);
-          tableHeaderRow.insertAdjacentElement('beforeend', th);
+    try {
+      //clear tbody if not get data
+      if (_data == null || _data.isEmpty) {
+        var tbody = tableElement.querySelector('tbody');
+        if (tbody != null) {
+          tbody.innerHtml = "<tr><td>Dados indisponiveis</td></tr>";
+        } else {
+          TableSectionElement tBody = tableElement.createTBody();
+          tBody.innerHtml = "<tr><td>Dados indisponiveis</td></tr>";
         }
+      }
+      if (_data != null) {
+        if (_data.isNotEmpty) {
+          tableElement.innerHtml = "";
 
-        for (final col in columns) {
-          var key = col.containsKey('key') ? col['key'] : null;
-          var title = col.containsKey('title') ? col['title'] : null;
-          var type = col.containsKey('type') ? col['type'] : null;
-          var limit = col.containsKey('limit') ? col['limit'] : null;
+          List<Map<String, dynamic>> columns = _data[0].toDisplayNames();
 
-          var th = new Element.tag('th');
-          th.text = title;
-          tableHeaderRow.insertAdjacentElement('beforeend', th);
-        }
-
-        TableSectionElement tBody = tableElement.createTBody();
-        for (final item in _data) {
-          var row = item.toJson();
-
-          TableRowElement tableRow = tBody.insertRow(-1);
-          //show checkbox to select single row
+          Element tableHead = tableElement.createTHead();
+          TableRowElement tableHeaderRow = tableElement.tHead.insertRow(-1);
+          //show checkbox on tableHead to select all rows
           if (_showCheckBoxToSelectRow) {
-            var tdcb = new Element.tag('td');
+            var th = new Element.tag('th');
             var label = new Element.tag('label');
-            label.onClick.listen((e) {
-              e.stopPropagation();
-            });
             label.classes.add("pure-material-checkbox");
             var input = new CheckboxInputElement();
             //input.type = "checkbox";
-            input.attributes['cbSelect'] = "true";
-            input.onClick.listen((MouseEvent event) {
-              onSelect(event, item);
-            });
+            input.onClick.listen(onSelectAll);
             var span = new Element.tag('span');
-            span.onClick.listen((e) {
-              e.stopPropagation();
-            });
             label.append(input);
             label.append(span);
-            tdcb.append(label);
-            tableRow.insertAdjacentElement('beforeend', tdcb);
+            th.append(label);
+            tableHeaderRow.insertAdjacentElement('beforeend', th);
           }
+          //render colunas de titulo
+          for (final col in columns) {
+            var key = col.containsKey('key') ? col['key'] : null;
+            var title = col.containsKey('title') ? col['title'] : null;
+            var type = col.containsKey('type') ? col['type'] : null;
+            var limit = col.containsKey('limit') ? col['limit'] : null;
 
-          tableRow.onClick.listen((event) {
-            /*if (_showCheckBoxToSelectRow) {
+            var th = new Element.tag('th');
+            th.text = title;
+            tableHeaderRow.insertAdjacentElement('beforeend', th);
+          }
+          //render linhas
+          TableSectionElement tBody = tableElement.createTBody();
+          for (final item in _data) {
+            var row = item.toJson();
+
+            TableRowElement tableRow = tBody.insertRow(-1);
+            //show checkbox to select single row
+            if (_showCheckBoxToSelectRow) {
+              var tdcb = new Element.tag('td');
+              var label = new Element.tag('label');
+              label.onClick.listen((e) {
+                e.stopPropagation();
+              });
+              label.classes.add("pure-material-checkbox");
+              var input = new CheckboxInputElement();
+              //input.type = "checkbox";
+              input.attributes['cbSelect'] = "true";
+              input.onClick.listen((MouseEvent event) {
+                onSelect(event, item);
+              });
+              var span = new Element.tag('span');
+              span.onClick.listen((e) {
+                e.stopPropagation();
+              });
+              label.append(input);
+              label.append(span);
+              tdcb.append(label);
+              tableRow.insertAdjacentElement('beforeend', tdcb);
+            }
+
+            tableRow.onClick.listen((event) {
+              /*if (_showCheckBoxToSelectRow) {
               HtmlElement el = event.target;
               TableCellElement tc = el.closest("td");
               if (tc != null && tc.cellIndex > 0) {
@@ -194,61 +201,65 @@ class DataTableComponent implements OnInit, AfterChanges, AfterViewInit {
             } else {
               onRowClick(item);
             }*/
-            onRowClick(item);
-          });
+              onRowClick(item);
+            });
 
-          //draw columns
-          for (final col in columns) {
-            var key = col.containsKey('key') ? col['key'] : null;
-            var title = col.containsKey('title') ? col['title'] : null;
-            var type = col.containsKey('type') ? col['type'] : null;
-            var limit = col.containsKey('limit') ? col['limit'] : null;
-            var format = col.containsKey('format') ? col['format'] : null;
-            var tdContent = "";
+            //draw columns
+            for (final col in columns) {
+              var key = col.containsKey('key') ? col['key'] : null;
+              var title = col.containsKey('title') ? col['title'] : null;
+              var type = col.containsKey('type') ? col['type'] : null;
+              var limit = col.containsKey('limit') ? col['limit'] : null;
+              var format = col.containsKey('format') ? col['format'] : null;
+              var tdContent = "";
 
-            switch (type.toString()) {
-              case 'date':
-                if (row[key] != null) {
-                  var fmt = format == null ? 'dd/MM/yyyy' : format;
-                  var formatter = new DateFormat(fmt);
-                  var date = DateTime.tryParse(row[key].toString());
-                  if (date != null) {
-                    tdContent = formatter.format(date);
+              switch (type.toString()) {
+                case 'date':
+                  if (row[key.toString()] != null) {
+                    var fmt = format == null ? 'dd/MM/yyyy' : format;
+                    var formatter = new DateFormat(fmt);
+                    var date = DateTime.tryParse(row[key].toString());
+                    if (date != null) {
+                      tdContent = formatter.format(date);
+                    }
                   }
-                }
-                break;
-              case 'string':
-                var str = row[key.toString()].toString();
-                if (limit != null) {
-                  str = Utils.truncate(str, limit);
-                }
-                tdContent = str;
-                break;
-              case 'img':
-                var src = row[key.toString()].toString();
-                if (src != "null") {
-                  var img = ImageElement();
-                  img.src = src;
-                  img.height = 40;
-                  tdContent = img.outerHtml;
-                } else {
-                  tdContent = "-";
-                }
-                break;
-              default:
-                tdContent = row[key.toString()].toString();
+                  break;
+                case 'string':
+                  var str = row[key.toString()].toString();
+                  if (limit != null) {
+                    str = Utils.truncate(str, limit);
+                  }
+                  tdContent = str;
+                  break;
+                case 'img':
+                  var src = row[key.toString()].toString();
+                  if (src != "null") {
+                    var img = ImageElement();
+                    img.src = src;
+                    img.height = 40;
+                    tdContent = img.outerHtml;
+                  } else {
+                    tdContent = "-";
+                  }
+                  break;
+                default:
+                  tdContent = row[key.toString()].toString();
+              }
+
+              tdContent = tdContent == "null" ? "-" : tdContent;
+
+              var td = new Element.tag('td');
+              td.setInnerHtml(tdContent,
+                  treeSanitizer: NodeTreeSanitizer.trusted);
+
+              tableRow.insertAdjacentElement('beforeend', td);
             }
-
-            tdContent = tdContent == "null" ? "-" : tdContent;
-
-            var td = new Element.tag('td');
-            td.setInnerHtml(tdContent,
-                treeSanitizer: NodeTreeSanitizer.trusted);
-
-            tableRow.insertAdjacentElement('beforeend', td);
           }
         }
       }
+    } catch (exception, stackTrace) {
+      print("draw() exception: " + exception.toString());
+      print(stackTrace.toString());
     }
   }
 
@@ -448,7 +459,6 @@ class DataTableComponent implements OnInit, AfterChanges, AfterViewInit {
       }
     }
   }
-
 }
 
 enum PaginationType { carousel, cube }

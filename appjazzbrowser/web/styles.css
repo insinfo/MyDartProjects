@@ -139,3 +139,8 @@
     background-color: currentColor;
 }
 */
+
+/*onMouseOver="this.style.background='#d1dfe8'" onmouseout="this.style.background='#ffffff'"*/
+.datatable-tr-hover:hover{
+    background:#d1dfe8;
+}

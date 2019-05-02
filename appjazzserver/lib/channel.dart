@@ -41,7 +41,7 @@ class AppjazzChannel extends ApplicationChannel {
     ]);
 
     final persistentStore = PostgreSQLPersistentStore.fromConnectionInfo(
-        "postgres", "s1sadm1n", "localhost", 5433, "apps");
+        "postgres", "s1sadm1n", "localhost", 5432, "apps");
     context = ManagedContext(dataModel, persistentStore);
   }
 
